@@ -1,0 +1,97 @@
+generator client {
+  provider = "prisma-client-js"
+}
+
+datasource db {
+  provider = "postgresql"
+  url      = env("DATABASE_URL")
+}
+
+model User {
+  id          String   @id
+  email       String   @unique
+  username    String   @unique
+  firstName   String?  @map("first_name")
+  lastName    String?  @map("last_name")
+  createdAt   DateTime @default(now()) @map("created_at")
+
+  predictionVotes PredictionVote[]
+
+  @@map("users")
+}
+
+model Team {
+  id          String @id @default(uuid())
+  name        String
+  country     String?
+  externalRef String? @unique @map("external_ref") // maps to football-data.org / football-data.co.uk team id
+
+  homeMatches Match[] @relation("HomeTeam")
+  awayMatches Match[] @relation("AwayTeam")
+
+  @@map("teams")
+}
+
+model Match {
+  id          String   @id @default(uuid())
+  externalRef String?  @unique @map("external_ref") // football-data.org match id
+  homeTeamId  String   @map("home_team_id")
+  awayTeamId  String   @map("away_team_id")
+  matchDate   DateTime @map("match_date")
+  competition String   // e.g. "UCL", "Premier League"
+  stage       String?  // e.g. "Group Stage", "Quarter Final"
+  homeScore   Int?     @map("home_score")
+  awayScore   Int?     @map("away_score")
+  status      String   @default("scheduled") // scheduled | live | finished
+
+  homeTeam Team @relation("HomeTeam", fields: [homeTeamId], references: [id])
+  awayTeam Team @relation("AwayTeam", fields: [awayTeamId], references: [id])
+
+  modelPredictions ModelPrediction[]
+  predictionVotes  PredictionVote[]
+
+  @@map("matches")
+  @@index([matchDate])
+  @@index([competition])
+}
+
+model ModelRun {
+  id           String   @id @default(uuid())
+  modelVersion String   @map("model_version")
+  trainedAt    DateTime @default(now()) @map("trained_at")
+  metrics      Json?    // accuracy, log-loss, brier score, etc.
+
+  predictions ModelPrediction[]
+
+  @@map("model_runs")
+}
+
+model ModelPrediction {
+  id           String   @id @default(uuid())
+  matchId      String   @map("match_id")
+  modelRunId   String   @map("model_run_id")
+  homeWinProb  Float    @map("home_win_prob")
+  drawProb     Float    @map("draw_prob")
+  awayWinProb  Float    @map("away_win_prob")
+  createdAt    DateTime @default(now()) @map("created_at")
+
+  match    Match    @relation(fields: [matchId], references: [id])
+  modelRun ModelRun @relation(fields: [modelRunId], references: [id])
+
+  @@map("model_predictions")
+  @@unique([matchId, modelRunId])
+}
+
+model PredictionVote {
+  id                String   @id @default(uuid())
+  userId            String   @map("user_id")
+  matchId           String   @map("match_id")
+  predictedOutcome  String   @map("predicted_outcome") // "home" | "draw" | "away"
+  createdAt         DateTime @default(now()) @map("created_at")
+
+  user  User  @relation(fields: [userId], references: [id])
+  match Match @relation(fields: [matchId], references: [id])
+
+  @@map("prediction_votes")
+  @@unique([userId, matchId])
+}
