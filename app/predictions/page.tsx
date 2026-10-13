@@ -1,64 +1,160 @@
 import { prisma } from "@/lib/prisma";
-import { logoutAction } from "@/app/actions/auth";
+import { Suspense } from "react";
+import { MatchList } from "./MatchList";
+import { MatchdayNav } from "./MatchdayNav";
+import { TeamFilter } from "./TeamFilter";
 
-export default async function PredictionsPage() {
-  const matches = await prisma.match.findMany({
-    where: {
-      competition: "UCL",
-      status: "scheduled",
-    },
+// ── Matchday grouping ─────────────────────────────────────────────────────────
+// Groups match dates into "matchday windows": consecutive dates within 3 days
+// of each other form one window. UCL matchdays are always 2-day windows with
+// 2+ week gaps between them, so this reliably separates them.
+
+function buildMatchdayWindows(dates: Date[]): { start: number; end: number }[] {
+  const days = [...new Set(dates.map((d) => new Date(d.toDateString()).getTime()))].sort(
+    (a, b) => a - b
+  );
+
+  const windows: { start: number; end: number }[] = [];
+  let start = days[0];
+  let prev = days[0];
+
+  for (let i = 1; i < days.length; i++) {
+    const gap = (days[i] - prev) / 86_400_000;
+    if (gap > 3) {
+      windows.push({ start, end: prev + 86_400_000 - 1 });
+      start = days[i];
+    }
+    prev = days[i];
+  }
+  if (days.length) windows.push({ start, end: prev + 86_400_000 - 1 });
+
+  return windows;
+}
+
+function windowLabel(window: { start: number; end: number }): string {
+  const fmt = (ts: number) =>
+    new Date(ts).toLocaleDateString("en-US", { month: "short", day: "numeric" });
+  const s = fmt(window.start);
+  const e = fmt(window.end - 1);
+  return s === e ? s : `${s} – ${e}`;
+}
+
+// ── Page ──────────────────────────────────────────────────────────────────────
+
+export default async function PredictionsPage({
+  searchParams,
+}: {
+  searchParams: Promise<{ matchday?: string; team?: string }>;
+}) {
+  const { matchday: matchdayParam, team: teamParam } = await searchParams;
+
+  const raw = await prisma.match.findMany({
+    where: { competition: "UCL", status: "scheduled" },
     include: {
       homeTeam: true,
       awayTeam: true,
-      modelPredictions: {
-        orderBy: { createdAt: "desc" },
-        take: 1,
-      },
+      modelPredictions: { orderBy: { createdAt: "desc" }, take: 1 },
     },
     orderBy: { matchDate: "asc" },
-    take: 20,
+  });
+
+  // Build matchday windows from all match dates
+  const windows = buildMatchdayWindows(raw.map((m) => m.matchDate));
+
+  // Default to the first window that hasn't fully passed
+  const now = Date.now();
+  const defaultIdx = windows.findIndex((w) => w.end >= now);
+  const safeDefault = defaultIdx === -1 ? windows.length - 1 : defaultIdx;
+  const currentIdx =
+    matchdayParam !== undefined
+      ? Math.max(0, Math.min(parseInt(matchdayParam, 10), windows.length - 1))
+      : safeDefault;
+
+  // All unique teams sorted for the dropdown
+  const teamMap = new Map<string, { id: string; name: string }>();
+  for (const m of raw) {
+    teamMap.set(m.homeTeam.id, { id: m.homeTeam.id, name: m.homeTeam.name });
+    teamMap.set(m.awayTeam.id, { id: m.awayTeam.id, name: m.awayTeam.name });
+  }
+  const allTeams = [...teamMap.values()].sort((a, b) => a.name.localeCompare(b.name));
+
+  // Filter: team view (all matchdays) OR matchday view
+  const window = windows[currentIdx];
+  const filtered = raw.filter((m) => {
+    if (teamParam) {
+      return m.homeTeamId === teamParam || m.awayTeamId === teamParam;
+    }
+    const t = new Date(m.matchDate.toDateString()).getTime();
+    return window ? t >= window.start && t <= window.end : true;
+  });
+
+  const matches = filtered.map((m) => {
+    const pred = m.modelPredictions[0] ?? null;
+    return {
+      id: m.id,
+      matchDate: m.matchDate,
+      stage: m.stage,
+      homeTeam: {
+        name: m.homeTeam.name,
+        country: m.homeTeam.country,
+        logoUrl: m.homeTeam.logoUrl,
+        primaryColor: m.homeTeam.primaryColor,
+        secondaryColor: m.homeTeam.secondaryColor,
+      },
+      awayTeam: {
+        name: m.awayTeam.name,
+        country: m.awayTeam.country,
+        logoUrl: m.awayTeam.logoUrl,
+        primaryColor: m.awayTeam.primaryColor,
+        secondaryColor: m.awayTeam.secondaryColor,
+      },
+      prediction: pred
+        ? {
+            homeWinProb: pred.homeWinProb,
+            drawProb: pred.drawProb,
+            awayWinProb: pred.awayWinProb,
+            homeElo: pred.homeElo,
+            awayElo: pred.awayElo,
+            eloDiff: pred.eloDiff,
+          }
+        : null,
+    };
   });
 
   return (
-    <main className="max-w-4xl mx-auto p-8">
-      <div className="flex justify-between items-center mb-8">
-        <h1 className="text-3xl font-bold">UCL Predictions</h1>
-        <form action={logoutAction}>
-          <button
-            type="submit"
-            className="text-sm text-gray-500 hover:text-gray-800 underline"
-          >
-            Log out
-          </button>
-        </form>
+    <main className="max-w-3xl mx-auto p-8">
+      <div className="mb-6">
+        <h1 className="text-3xl font-bold">Upcoming Matches</h1>
+        <p className="text-sm text-gray-500 mt-1">Click a match to see the full prediction breakdown</p>
       </div>
+
+      {/* Controls */}
+      <div className="flex items-center justify-between gap-4 mb-6">
+        <Suspense fallback={<div className="h-9 w-48 bg-gray-800 rounded-lg animate-pulse" />}>
+          <TeamFilter teams={allTeams} selectedId={teamParam} />
+        </Suspense>
+
+        {!teamParam && windows.length > 0 && (
+          <Suspense fallback={null}>
+            <MatchdayNav
+              currentIdx={currentIdx}
+              total={windows.length}
+              label={window ? windowLabel(window) : ""}
+            />
+          </Suspense>
+        )}
+
+        {teamParam && (
+          <span className="text-xs text-gray-500">
+            {matches.length} match{matches.length !== 1 ? "es" : ""} remaining
+          </span>
+        )}
+      </div>
+
       {matches.length === 0 ? (
-        <p className="text-gray-500">No upcoming matches with predictions yet.</p>
+        <p className="text-gray-500">No matches found.</p>
       ) : (
-        <ul className="space-y-4">
-          {matches.map((match) => {
-            const pred = match.modelPredictions[0];
-            return (
-              <li key={match.id} className="border rounded-lg p-4">
-                <div className="flex justify-between items-center">
-                  <span className="font-semibold">{match.homeTeam.name}</span>
-                  <span className="text-gray-400">vs</span>
-                  <span className="font-semibold">{match.awayTeam.name}</span>
-                </div>
-                <div className="text-sm text-gray-500 mt-1">
-                  {new Date(match.matchDate).toLocaleDateString()} · {match.stage}
-                </div>
-                {pred && (
-                  <div className="mt-2 flex gap-4 text-sm">
-                    <span className="text-green-600">Home: {(pred.homeWinProb * 100).toFixed(1)}%</span>
-                    <span className="text-yellow-600">Draw: {(pred.drawProb * 100).toFixed(1)}%</span>
-                    <span className="text-red-600">Away: {(pred.awayWinProb * 100).toFixed(1)}%</span>
-                  </div>
-                )}
-              </li>
-            );
-          })}
-        </ul>
+        <MatchList matches={matches} />
       )}
     </main>
   );

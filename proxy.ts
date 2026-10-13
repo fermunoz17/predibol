@@ -32,11 +32,8 @@ export async function proxy(request: NextRequest) {
     data: { user },
   } = await supabase.auth.getUser();
 
-  if (!user && !PUBLIC_PATHS.has(request.nextUrl.pathname)) {
-    const url = request.nextUrl.clone();
-    url.pathname = "/login";
-    return NextResponse.redirect(url);
-  }
+  // Auth is checked but not enforced globally — protected routes added later.
+  void user;
 
   return supabaseResponse;
 }

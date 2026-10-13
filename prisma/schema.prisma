@@ -25,11 +25,38 @@ model Team {
   name        String
   country     String?
   externalRef String? @unique @map("external_ref") // maps to football-data.org / football-data.co.uk team id
+  logoUrl      String? @map("logo_url")             // from UEFA standings API
+  primaryColor   String? @map("primary_color")       // hex, e.g. "#DC052D"
+  secondaryColor String? @map("secondary_color")     // hex, used for away team display
 
-  homeMatches Match[] @relation("HomeTeam")
-  awayMatches Match[] @relation("AwayTeam")
+  homeMatches  Match[]       @relation("HomeTeam")
+  awayMatches  Match[]       @relation("AwayTeam")
+  uclStandings UclStanding[]
 
   @@map("teams")
+}
+
+model UclStanding {
+  id                  String   @id @default(uuid())
+  teamId              String   @map("team_id")
+  uclTeamId           String   @map("ucl_team_id")   // UEFA internal team ID
+  seasonYear          String   @map("season_year")
+  rank                Int
+  played              Int
+  won                 Int
+  drawn               Int
+  lost                Int
+  goalsFor            Int      @map("goals_for")
+  goalsAgainst        Int      @map("goals_against")
+  goalDifference      Int      @map("goal_difference")
+  points              Int
+  rankingCoefficient  Float?   @map("ranking_coefficient")
+  updatedAt           DateTime @default(now()) @map("updated_at")
+
+  team Team @relation(fields: [teamId], references: [id])
+
+  @@unique([teamId, seasonYear])
+  @@map("ucl_standings")
 }
 
 model Match {
@@ -73,6 +100,10 @@ model ModelPrediction {
   homeWinProb  Float    @map("home_win_prob")
   drawProb     Float    @map("draw_prob")
   awayWinProb  Float    @map("away_win_prob")
+  homeElo      Float?   @map("home_elo")
+  awayElo      Float?   @map("away_elo")
+  eloDiff      Float?   @map("elo_diff")
+  features     Json?    // form arrays, scoring edges, all features used
   createdAt    DateTime @default(now()) @map("created_at")
 
   match    Match    @relation(fields: [matchId], references: [id])
