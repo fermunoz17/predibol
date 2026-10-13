@@ -86,7 +86,7 @@ export function ProbabilityChart({ homeTeam, awayTeam, homeWinProb, drawProb, aw
           <Tooltip formatter={(v) => [`${v}%`, "Probability"]}
             contentStyle={{ background: "#111827", border: "1px solid #374151", borderRadius: 8 }}
             labelStyle={{ color: "#f9fafb" }} />
-          <Bar dataKey="prob" radius={[0, 4, 4, 0]} label={{ position: "right", fill: "#9ca3af", fontSize: 12, formatter: (v: number) => `${v}%` }}>
+          <Bar dataKey="prob" radius={[0, 4, 4, 0]} label={{ position: "right", fill: "#9ca3af", fontSize: 12, formatter: (v: unknown) => `${v}%` }}>
             {data.map((entry) => <Cell key={entry.name} fill={entry.fill} />)}
           </Bar>
         </BarChart>
@@ -277,11 +277,11 @@ export function ScoringEdgeChart({ homeTeam, awayTeam, features, homeColor, away
             tick={{ fill: "#d1d5db", fontSize: 11 }} axisLine={false} tickLine={false} />
           <ReferenceLine x={1.35} stroke="#374151" strokeDasharray="4 4"
             label={{ value: "avg", fill: "#6b7280", fontSize: 10 }} />
-          <Tooltip formatter={(v: number) => [v.toFixed(2), "Goals / match"]}
+          <Tooltip formatter={(v: unknown) => [(v as number).toFixed(2), "Goals / match"]}
             contentStyle={{ background: "#111827", border: "1px solid #374151", borderRadius: 8 }}
             labelStyle={{ color: "#f9fafb" }} />
           <Bar dataKey="value" radius={[0, 4, 4, 0]}
-            label={{ position: "right", fill: "#9ca3af", fontSize: 11, formatter: (v: number) => v.toFixed(2) }}>
+            label={{ position: "right", fill: "#9ca3af", fontSize: 11, formatter: (v: unknown) => (v as number).toFixed(2) }}>
             {data.map((entry) => <Cell key={entry.label} fill={entry.fill} />)}
           </Bar>
         </BarChart>
