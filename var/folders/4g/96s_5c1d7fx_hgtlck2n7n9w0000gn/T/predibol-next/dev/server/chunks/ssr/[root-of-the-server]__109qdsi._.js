@@ -161,7 +161,7 @@ async function MatchDetailPage({ params }) {
         children: [
             /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$rsc$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$rsc$5d$__$28$ecmascript$29$__["jsxDEV"])(__TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$client$2f$app$2d$dir$2f$link$2e$react$2d$server$2e$js__$5b$app$2d$rsc$5d$__$28$ecmascript$29$__["default"], {
                 href: "/predictions",
-                className: "text-sm text-gray-500 hover:text-gray-300 mb-6 inline-block",
+                className: "text-sm text-[#4a6899] hover:text-[#6a90cc] mb-6 inline-block transition-colors",
                 children: "← All predictions"
             }, void 0, false, {
                 fileName: "[project]/app/predictions/[id]/page.tsx",
@@ -172,7 +172,7 @@ async function MatchDetailPage({ params }) {
                 className: "mb-8",
                 children: [
                     /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$rsc$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$rsc$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
-                        className: "text-xs text-gray-500 uppercase tracking-wider mb-1",
+                        className: "text-xs text-[#4a6899] uppercase tracking-wider mb-1",
                         children: [
                             match.competition,
                             " · ",
@@ -216,7 +216,7 @@ async function MatchDetailPage({ params }) {
                                 columnNumber: 11
                             }, this),
                             /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$rsc$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$rsc$5d$__$28$ecmascript$29$__["jsxDEV"])("span", {
-                                className: "text-gray-600 shrink-0 text-sm",
+                                className: "text-[#2a4a88] shrink-0 text-sm",
                                 children: "vs"
                             }, void 0, false, {
                                 fileName: "[project]/app/predictions/[id]/page.tsx",
@@ -259,7 +259,7 @@ async function MatchDetailPage({ params }) {
                         columnNumber: 9
                     }, this),
                     /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$rsc$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$rsc$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
-                        className: "text-sm text-gray-500 text-center mt-1",
+                        className: "text-sm text-[#4a6899] text-center mt-1",
                         children: new Date(match.matchDate).toLocaleDateString("en-US", {
                             weekday: "long",
                             month: "long",
@@ -278,7 +278,7 @@ async function MatchDetailPage({ params }) {
                 columnNumber: 7
             }, this),
             pred == null ? /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$rsc$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$rsc$5d$__$28$ecmascript$29$__["jsxDEV"])("p", {
-                className: "text-gray-500",
+                className: "text-[#4a6899]",
                 children: "No prediction available for this match yet."
             }, void 0, false, {
                 fileName: "[project]/app/predictions/[id]/page.tsx",
@@ -291,7 +291,7 @@ async function MatchDetailPage({ params }) {
                         className: "text-center py-4",
                         children: [
                             /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$rsc$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$rsc$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
-                                className: "text-xs text-gray-500 uppercase tracking-wider mb-1",
+                                className: "text-xs text-[#4a6899] uppercase tracking-wider mb-1",
                                 children: "Predicted outcome"
                             }, void 0, false, {
                                 fileName: "[project]/app/predictions/[id]/page.tsx",

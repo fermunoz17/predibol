@@ -97,7 +97,7 @@ export default async function PredictionsPage({
       <main className="max-w-3xl mx-auto p-8">
         <div className="mb-6">
           <h1 className="text-3xl font-bold">Predictions</h1>
-          <p className="text-sm text-gray-500 mt-1">UEFA Champions League 2025/26</p>
+          <p className="text-sm text-[#4a6899] mt-1">UEFA Champions League 2025/26</p>
         </div>
 
         <Suspense fallback={null}>
@@ -107,7 +107,7 @@ export default async function PredictionsPage({
         <AccuracySummary matches={results} />
 
         {results.length === 0 ? (
-          <p className="text-gray-500">No finished matches yet.</p>
+          <p className="text-[#4a6899]">No finished matches yet.</p>
         ) : (
           <ResultsList matches={results} />
         )}
@@ -189,7 +189,7 @@ export default async function PredictionsPage({
     <main className="max-w-3xl mx-auto p-8">
       <div className="mb-6">
         <h1 className="text-3xl font-bold">Predictions</h1>
-        <p className="text-sm text-gray-500 mt-1">UEFA Champions League 2025/26</p>
+        <p className="text-sm text-[#4a6899] mt-1">UEFA Champions League 2025/26</p>
       </div>
 
       <Suspense fallback={null}>
@@ -198,7 +198,7 @@ export default async function PredictionsPage({
 
       {/* Controls */}
       <div className="flex items-center justify-between gap-4 mb-6">
-        <Suspense fallback={<div className="h-9 w-48 bg-gray-800 rounded-lg animate-pulse" />}>
+        <Suspense fallback={<div className="h-9 w-48 bg-[#060f2a] rounded-lg animate-pulse" />}>
           <TeamFilter teams={allTeams} selectedId={teamParam} />
         </Suspense>
 
@@ -213,14 +213,14 @@ export default async function PredictionsPage({
         )}
 
         {teamParam && (
-          <span className="text-xs text-gray-500">
+          <span className="text-xs text-[#4a6899]">
             {matches.length} match{matches.length !== 1 ? "es" : ""} remaining
           </span>
         )}
       </div>
 
       {matches.length === 0 ? (
-        <p className="text-gray-500">No upcoming matches found.</p>
+        <p className="text-[#4a6899]">No upcoming matches found.</p>
       ) : (
         <MatchList matches={matches} />
       )}

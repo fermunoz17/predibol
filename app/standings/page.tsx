@@ -12,16 +12,16 @@ export default async function StandingsPage() {
     <main className="max-w-4xl mx-auto p-8">
       <div className="mb-8">
         <h1 className="text-3xl font-bold">UCL Standings</h1>
-        <p className="text-sm text-gray-500 mt-1">2026/27 League Phase</p>
+        <p className="text-sm text-[#4a6899] mt-1">2026/27 League Phase</p>
       </div>
 
       {standings.length === 0 ? (
-        <p className="text-gray-500">No standings data yet. Run <code className="text-xs bg-gray-800 px-1 py-0.5 rounded">npm run db:ingest-standings</code> to populate.</p>
+        <p className="text-[#4a6899]">No standings data yet. Run <code className="text-xs bg-[#060f2a] border border-[#142655] px-1 py-0.5 rounded">npm run db:ingest-standings</code> to populate.</p>
       ) : (
         <div className="overflow-x-auto">
           <table className="w-full text-sm">
             <thead>
-              <tr className="text-xs text-gray-500 uppercase tracking-wider border-b border-gray-800">
+              <tr className="text-xs text-[#4a6899] uppercase tracking-wider border-b border-[#142655]">
                 <th className="text-left pb-3 pr-4 w-8">#</th>
                 <th className="text-left pb-3">Team</th>
                 <th className="text-center pb-3 px-3">P</th>
@@ -42,7 +42,7 @@ export default async function StandingsPage() {
                 return (
                   <tr
                     key={s.id}
-                    className={`border-b border-gray-800/60 hover:bg-gray-900/50 transition-colors ${
+                    className={`border-b border-[#142655]/60 hover:bg-[#060f2a]/50 transition-colors ${
                       i === 7 ? "border-b-2 border-blue-800" :
                       i === 23 ? "border-b-2 border-yellow-800" : ""
                     }`}
@@ -51,7 +51,7 @@ export default async function StandingsPage() {
                       <span className={`text-xs font-semibold ${
                         isTop8 ? "text-blue-400" :
                         isPlayoff ? "text-yellow-400" :
-                        "text-gray-500"
+                        "text-[#4a6899]"
                       }`}>
                         {s.rank}
                       </span>
@@ -68,22 +68,22 @@ export default async function StandingsPage() {
                             unoptimized
                           />
                         ) : (
-                          <div className="w-6 h-6 rounded-full bg-gray-800 shrink-0" />
+                          <div className="w-6 h-6 rounded-full bg-[#060f2a] shrink-0" />
                         )}
                         <span className="font-medium">{s.team.name}</span>
                         {s.team.country && (
-                          <span className="text-xs text-gray-600 hidden sm:inline">{s.team.country}</span>
+                          <span className="text-xs text-[#2a4a88] hidden sm:inline">{s.team.country}</span>
                         )}
                       </div>
                     </td>
-                    <td className="py-3 text-center text-gray-400 px-3">{s.played}</td>
+                    <td className="py-3 text-center text-[#6a90cc] px-3">{s.played}</td>
                     <td className="py-3 text-center text-green-400 px-3">{s.won}</td>
-                    <td className="py-3 text-center text-gray-400 px-3">{s.drawn}</td>
+                    <td className="py-3 text-center text-[#6a90cc] px-3">{s.drawn}</td>
                     <td className="py-3 text-center text-red-400 px-3">{s.lost}</td>
-                    <td className="py-3 text-center text-gray-400 px-3">{s.goalsFor}</td>
-                    <td className="py-3 text-center text-gray-400 px-3">{s.goalsAgainst}</td>
+                    <td className="py-3 text-center text-[#6a90cc] px-3">{s.goalsFor}</td>
+                    <td className="py-3 text-center text-[#6a90cc] px-3">{s.goalsAgainst}</td>
                     <td className="py-3 text-center px-3">
-                      <span className={s.goalDifference > 0 ? "text-green-400" : s.goalDifference < 0 ? "text-red-400" : "text-gray-400"}>
+                      <span className={s.goalDifference > 0 ? "text-green-400" : s.goalDifference < 0 ? "text-red-400" : "text-[#6a90cc]"}>
                         {s.goalDifference > 0 ? `+${s.goalDifference}` : s.goalDifference}
                       </span>
                     </td>
@@ -95,7 +95,7 @@ export default async function StandingsPage() {
           </table>
 
           {/* Legend */}
-          <div className="flex gap-6 mt-6 text-xs text-gray-500">
+          <div className="flex gap-6 mt-6 text-xs text-[#4a6899]">
             <div className="flex items-center gap-2">
               <span className="inline-block w-3 h-0.5 bg-blue-800" />
               <span className="text-blue-400">Top 8</span> — Round of 16 (direct)
@@ -105,7 +105,7 @@ export default async function StandingsPage() {
               <span className="text-yellow-400">9–24</span> — Knockout playoffs
             </div>
             <div className="flex items-center gap-2">
-              <span className="text-gray-500">25–36</span> — Eliminated
+              <span className="text-[#4a6899]">25–36</span> — Eliminated
             </div>
           </div>
         </div>

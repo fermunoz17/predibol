@@ -63,7 +63,7 @@ async function StandingsPage() {
                         columnNumber: 9
                     }, this),
                     /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$rsc$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$rsc$5d$__$28$ecmascript$29$__["jsxDEV"])("p", {
-                        className: "text-sm text-gray-500 mt-1",
+                        className: "text-sm text-[#4a6899] mt-1",
                         children: "2026/27 League Phase"
                     }, void 0, false, {
                         fileName: "[project]/app/standings/page.tsx",
@@ -77,16 +77,16 @@ async function StandingsPage() {
                 columnNumber: 7
             }, this),
             standings.length === 0 ? /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$rsc$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$rsc$5d$__$28$ecmascript$29$__["jsxDEV"])("p", {
-                className: "text-gray-500",
+                className: "text-[#4a6899]",
                 children: [
                     "No standings data yet. Run ",
                     /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$rsc$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$rsc$5d$__$28$ecmascript$29$__["jsxDEV"])("code", {
-                        className: "text-xs bg-gray-800 px-1 py-0.5 rounded",
+                        className: "text-xs bg-[#060f2a] border border-[#142655] px-1 py-0.5 rounded",
                         children: "npm run db:ingest-standings"
                     }, void 0, false, {
                         fileName: "[project]/app/standings/page.tsx",
                         lineNumber: 19,
-                        columnNumber: 65
+                        columnNumber: 66
                     }, this),
                     " to populate."
                 ]
@@ -102,7 +102,7 @@ async function StandingsPage() {
                         children: [
                             /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$rsc$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$rsc$5d$__$28$ecmascript$29$__["jsxDEV"])("thead", {
                                 children: /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$rsc$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$rsc$5d$__$28$ecmascript$29$__["jsxDEV"])("tr", {
-                                    className: "text-xs text-gray-500 uppercase tracking-wider border-b border-gray-800",
+                                    className: "text-xs text-[#4a6899] uppercase tracking-wider border-b border-[#142655]",
                                     children: [
                                         /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$rsc$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$rsc$5d$__$28$ecmascript$29$__["jsxDEV"])("th", {
                                             className: "text-left pb-3 pr-4 w-8",
@@ -200,12 +200,12 @@ async function StandingsPage() {
                                     const isTop8 = s.rank <= 8;
                                     const isPlayoff = s.rank > 8 && s.rank <= 24;
                                     return /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$rsc$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$rsc$5d$__$28$ecmascript$29$__["jsxDEV"])("tr", {
-                                        className: `border-b border-gray-800/60 hover:bg-gray-900/50 transition-colors ${i === 7 ? "border-b-2 border-blue-800" : i === 23 ? "border-b-2 border-yellow-800" : ""}`,
+                                        className: `border-b border-[#142655]/60 hover:bg-[#060f2a]/50 transition-colors ${i === 7 ? "border-b-2 border-blue-800" : i === 23 ? "border-b-2 border-yellow-800" : ""}`,
                                         children: [
                                             /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$rsc$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$rsc$5d$__$28$ecmascript$29$__["jsxDEV"])("td", {
                                                 className: "py-3 pr-4",
                                                 children: /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$rsc$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$rsc$5d$__$28$ecmascript$29$__["jsxDEV"])("span", {
-                                                    className: `text-xs font-semibold ${isTop8 ? "text-blue-400" : isPlayoff ? "text-yellow-400" : "text-gray-500"}`,
+                                                    className: `text-xs font-semibold ${isTop8 ? "text-blue-400" : isPlayoff ? "text-yellow-400" : "text-[#4a6899]"}`,
                                                     children: s.rank
                                                 }, void 0, false, {
                                                     fileName: "[project]/app/standings/page.tsx",
@@ -234,7 +234,7 @@ async function StandingsPage() {
                                                             lineNumber: 62,
                                                             columnNumber: 27
                                                         }, this) : /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$rsc$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$rsc$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
-                                                            className: "w-6 h-6 rounded-full bg-gray-800 shrink-0"
+                                                            className: "w-6 h-6 rounded-full bg-[#060f2a] shrink-0"
                                                         }, void 0, false, {
                                                             fileName: "[project]/app/standings/page.tsx",
                                                             lineNumber: 71,
@@ -249,7 +249,7 @@ async function StandingsPage() {
                                                             columnNumber: 25
                                                         }, this),
                                                         s.team.country && /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$rsc$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$rsc$5d$__$28$ecmascript$29$__["jsxDEV"])("span", {
-                                                            className: "text-xs text-gray-600 hidden sm:inline",
+                                                            className: "text-xs text-[#2a4a88] hidden sm:inline",
                                                             children: s.team.country
                                                         }, void 0, false, {
                                                             fileName: "[project]/app/standings/page.tsx",
@@ -268,7 +268,7 @@ async function StandingsPage() {
                                                 columnNumber: 21
                                             }, this),
                                             /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$rsc$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$rsc$5d$__$28$ecmascript$29$__["jsxDEV"])("td", {
-                                                className: "py-3 text-center text-gray-400 px-3",
+                                                className: "py-3 text-center text-[#6a90cc] px-3",
                                                 children: s.played
                                             }, void 0, false, {
                                                 fileName: "[project]/app/standings/page.tsx",
@@ -284,7 +284,7 @@ async function StandingsPage() {
                                                 columnNumber: 21
                                             }, this),
                                             /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$rsc$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$rsc$5d$__$28$ecmascript$29$__["jsxDEV"])("td", {
-                                                className: "py-3 text-center text-gray-400 px-3",
+                                                className: "py-3 text-center text-[#6a90cc] px-3",
                                                 children: s.drawn
                                             }, void 0, false, {
                                                 fileName: "[project]/app/standings/page.tsx",
@@ -300,7 +300,7 @@ async function StandingsPage() {
                                                 columnNumber: 21
                                             }, this),
                                             /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$rsc$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$rsc$5d$__$28$ecmascript$29$__["jsxDEV"])("td", {
-                                                className: "py-3 text-center text-gray-400 px-3",
+                                                className: "py-3 text-center text-[#6a90cc] px-3",
                                                 children: s.goalsFor
                                             }, void 0, false, {
                                                 fileName: "[project]/app/standings/page.tsx",
@@ -308,7 +308,7 @@ async function StandingsPage() {
                                                 columnNumber: 21
                                             }, this),
                                             /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$rsc$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$rsc$5d$__$28$ecmascript$29$__["jsxDEV"])("td", {
-                                                className: "py-3 text-center text-gray-400 px-3",
+                                                className: "py-3 text-center text-[#6a90cc] px-3",
                                                 children: s.goalsAgainst
                                             }, void 0, false, {
                                                 fileName: "[project]/app/standings/page.tsx",
@@ -318,7 +318,7 @@ async function StandingsPage() {
                                             /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$rsc$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$rsc$5d$__$28$ecmascript$29$__["jsxDEV"])("td", {
                                                 className: "py-3 text-center px-3",
                                                 children: /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$rsc$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$rsc$5d$__$28$ecmascript$29$__["jsxDEV"])("span", {
-                                                    className: s.goalDifference > 0 ? "text-green-400" : s.goalDifference < 0 ? "text-red-400" : "text-gray-400",
+                                                    className: s.goalDifference > 0 ? "text-green-400" : s.goalDifference < 0 ? "text-red-400" : "text-[#6a90cc]",
                                                     children: s.goalDifference > 0 ? `+${s.goalDifference}` : s.goalDifference
                                                 }, void 0, false, {
                                                     fileName: "[project]/app/standings/page.tsx",
@@ -357,7 +357,7 @@ async function StandingsPage() {
                         columnNumber: 11
                     }, this),
                     /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$rsc$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$rsc$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
-                        className: "flex gap-6 mt-6 text-xs text-gray-500",
+                        className: "flex gap-6 mt-6 text-xs text-[#4a6899]",
                         children: [
                             /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$rsc$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$rsc$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
                                 className: "flex items-center gap-2",
@@ -413,7 +413,7 @@ async function StandingsPage() {
                                 className: "flex items-center gap-2",
                                 children: [
                                     /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$rsc$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$rsc$5d$__$28$ecmascript$29$__["jsxDEV"])("span", {
-                                        className: "text-gray-500",
+                                        className: "text-[#4a6899]",
                                         children: "25–36"
                                     }, void 0, false, {
                                         fileName: "[project]/app/standings/page.tsx",

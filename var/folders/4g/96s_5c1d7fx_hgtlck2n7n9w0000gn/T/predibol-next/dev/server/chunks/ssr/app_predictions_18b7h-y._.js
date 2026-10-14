@@ -29,7 +29,7 @@ function TeamLogo({ team, align }) {
                 lineNumber: 36,
                 columnNumber: 9
             }, this) : /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
-                className: "w-7 h-7 rounded-full bg-gray-800 shrink-0"
+                className: "w-7 h-7 rounded-full bg-[#060f2a] shrink-0"
             }, void 0, false, {
                 fileName: "[project]/app/predictions/MatchList.tsx",
                 lineNumber: 38,
@@ -65,7 +65,7 @@ function ProbBar({ homeProb, drawProb, awayProb, homeColor, awayColor }) {
                 columnNumber: 7
             }, this),
             /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
-                className: "bg-gray-500",
+                className: "bg-[#4a6899]",
                 style: {
                     width: `${drawProb * 100}%`
                 }
@@ -100,7 +100,7 @@ function outcomeLabel(pred, homeTeam, awayTeam, homeColor, awayColor) {
     };
     if (max === pred.drawProb) return {
         label: "Draw likely",
-        color: "#9ca3af",
+        color: "#90b8e8",
         isTeam: false
     };
     return {
@@ -119,7 +119,7 @@ function MatchList({ matches }) {
             return /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("li", {
                 children: /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])(__TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$client$2f$app$2d$dir$2f$link$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["default"], {
                     href: `/predictions/${match.id}`,
-                    className: "block border border-gray-800 rounded-xl p-4 hover:border-gray-600 transition-colors",
+                    className: "block border border-[#142655] bg-[#060f2a] rounded-xl p-4 hover:border-[#1e4488] transition-colors",
                     children: [
                         /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
                             className: "flex items-center gap-3",
@@ -133,7 +133,7 @@ function MatchList({ matches }) {
                                     columnNumber: 17
                                 }, this),
                                 /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("span", {
-                                    className: "text-xs text-gray-500 uppercase tracking-wider shrink-0 w-6 text-center",
+                                    className: "text-xs text-[#4a6899] uppercase tracking-wider shrink-0 w-6 text-center",
                                     children: "vs"
                                 }, void 0, false, {
                                     fileName: "[project]/app/predictions/MatchList.tsx",
@@ -155,7 +155,7 @@ function MatchList({ matches }) {
                             columnNumber: 15
                         }, this),
                         /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
-                            className: "text-xs text-gray-500 mt-2 text-center",
+                            className: "text-xs text-[#4a6899] mt-2 text-center",
                             children: [
                                 new Date(match.matchDate).toLocaleDateString("en-US", {
                                     weekday: "short",
@@ -282,14 +282,14 @@ function MatchdayNav({ currentIdx, total, label }) {
         children: [
             currentIdx > 0 ? /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])(__TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$client$2f$app$2d$dir$2f$link$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["default"], {
                 href: href(currentIdx - 1),
-                className: "text-gray-400 hover:text-white px-1",
+                className: "text-[#6a90cc] hover:text-[#45bfff] px-1 transition-colors",
                 children: "←"
             }, void 0, false, {
                 fileName: "[project]/app/predictions/MatchdayNav.tsx",
                 lineNumber: 25,
                 columnNumber: 9
             }, this) : /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("span", {
-                className: "text-gray-700 px-1",
+                className: "text-[#2a4a88] px-1",
                 children: "←"
             }, void 0, false, {
                 fileName: "[project]/app/predictions/MatchdayNav.tsx",
@@ -297,7 +297,7 @@ function MatchdayNav({ currentIdx, total, label }) {
                 columnNumber: 9
             }, this),
             /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("span", {
-                className: "text-gray-300 min-w-[140px] text-center",
+                className: "text-[#90b8e8] min-w-[140px] text-center",
                 children: label
             }, void 0, false, {
                 fileName: "[project]/app/predictions/MatchdayNav.tsx",
@@ -306,14 +306,14 @@ function MatchdayNav({ currentIdx, total, label }) {
             }, this),
             currentIdx < total - 1 ? /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])(__TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$client$2f$app$2d$dir$2f$link$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["default"], {
                 href: href(currentIdx + 1),
-                className: "text-gray-400 hover:text-white px-1",
+                className: "text-[#6a90cc] hover:text-[#45bfff] px-1 transition-colors",
                 children: "→"
             }, void 0, false, {
                 fileName: "[project]/app/predictions/MatchdayNav.tsx",
                 lineNumber: 31,
                 columnNumber: 9
             }, this) : /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("span", {
-                className: "text-gray-700 px-1",
+                className: "text-[#2a4a88] px-1",
                 children: "→"
             }, void 0, false, {
                 fileName: "[project]/app/predictions/MatchdayNav.tsx",
@@ -361,12 +361,12 @@ function AccuracySummary({ matches }) {
     const correct = withPred.filter((m)=>predictedOutcome(m.prediction) === actualOutcome(m.homeScore, m.awayScore)).length;
     const pct = Math.round(correct / withPred.length * 100);
     return /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
-        className: "border border-gray-800 rounded-xl p-4 mb-6 flex items-center justify-between",
+        className: "border border-[#142655] bg-[#060f2a] rounded-xl p-4 mb-6 flex items-center justify-between",
         children: [
             /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
                 children: [
                     /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("p", {
-                        className: "text-sm text-gray-400",
+                        className: "text-sm text-[#6a90cc]",
                         children: "Model accuracy"
                     }, void 0, false, {
                         fileName: "[project]/app/predictions/ResultsList.tsx",
@@ -379,7 +379,7 @@ function AccuracySummary({ matches }) {
                             pct,
                             "%",
                             /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("span", {
-                                className: "text-sm font-normal text-gray-500 ml-2",
+                                className: "text-sm font-normal text-[#4a6899] ml-2",
                                 children: [
                                     correct,
                                     " / ",
@@ -404,7 +404,7 @@ function AccuracySummary({ matches }) {
                 columnNumber: 7
             }, this),
             /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
-                className: "w-24 h-2 rounded overflow-hidden bg-gray-800",
+                className: "w-24 h-2 rounded overflow-hidden bg-[#142655]",
                 children: /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
                     className: "h-full rounded",
                     style: {
@@ -438,11 +438,11 @@ function ResultsList({ matches }) {
             const correct = predicted !== null ? predicted === actual : null;
             const awayColor = match.awayTeam.secondaryColor ?? match.awayTeam.primaryColor;
             const winnerName = actual === "home" ? match.homeTeam.name : actual === "away" ? match.awayTeam.name : null;
-            const winnerColor = actual === "home" ? match.homeTeam.primaryColor : actual === "away" ? awayColor : "#9ca3af";
+            const winnerColor = actual === "home" ? match.homeTeam.primaryColor : actual === "away" ? awayColor : "#90b8e8";
             return /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("li", {
                 children: /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])(__TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$client$2f$app$2d$dir$2f$link$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["default"], {
                     href: `/predictions/${match.id}`,
-                    className: "block border border-gray-800 rounded-xl p-4 hover:border-gray-600 transition-colors",
+                    className: "block border border-[#142655] bg-[#060f2a] rounded-xl p-4 hover:border-[#1e4488] transition-colors",
                     children: [
                         /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
                             className: "flex items-center gap-3",
@@ -462,7 +462,7 @@ function ResultsList({ matches }) {
                                             lineNumber: 112,
                                             columnNumber: 21
                                         }, this) : /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
-                                            className: "w-7 h-7 rounded-full bg-gray-800 shrink-0"
+                                            className: "w-7 h-7 rounded-full bg-[#060f2a] shrink-0"
                                         }, void 0, false, {
                                             fileName: "[project]/app/predictions/ResultsList.tsx",
                                             lineNumber: 114,
@@ -516,7 +516,7 @@ function ResultsList({ matches }) {
                                             lineNumber: 131,
                                             columnNumber: 21
                                         }, this) : /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
-                                            className: "w-7 h-7 rounded-full bg-gray-800 shrink-0"
+                                            className: "w-7 h-7 rounded-full bg-[#060f2a] shrink-0"
                                         }, void 0, false, {
                                             fileName: "[project]/app/predictions/ResultsList.tsx",
                                             lineNumber: 133,
@@ -543,7 +543,7 @@ function ResultsList({ matches }) {
                             columnNumber: 15
                         }, this),
                         /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
-                            className: "text-xs text-gray-500 mt-2 text-center",
+                            className: "text-xs text-[#4a6899] mt-2 text-center",
                             children: [
                                 new Date(match.matchDate).toLocaleDateString("en-US", {
                                     weekday: "short",
@@ -562,14 +562,14 @@ function ResultsList({ matches }) {
                             className: "mt-3 flex items-center justify-between text-xs",
                             children: [
                                 /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("span", {
-                                    className: "text-gray-500",
+                                    className: "text-[#4a6899]",
                                     children: [
                                         "Winner:",
                                         " ",
                                         /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("span", {
                                             className: "font-medium",
                                             style: {
-                                                color: winnerColor ?? "#9ca3af"
+                                                color: winnerColor ?? "#90b8e8"
                                             },
                                             children: winnerName ?? "Draw"
                                         }, void 0, false, {
@@ -591,7 +591,7 @@ function ResultsList({ matches }) {
                                     lineNumber: 159,
                                     columnNumber: 19
                                 }, this) : /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("span", {
-                                    className: "text-gray-600 text-xs",
+                                    className: "text-[#2a4a88] text-xs",
                                     children: "No prediction"
                                 }, void 0, false, {
                                     fileName: "[project]/app/predictions/ResultsList.tsx",
@@ -645,7 +645,7 @@ function TabNav({ activeTab }) {
         return `/predictions?${p.toString()}`;
     }
     return /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
-        className: "flex border-b border-gray-800 mb-6",
+        className: "flex border-b border-[#142655] mb-6",
         children: [
             "upcoming",
             "results"
@@ -653,7 +653,7 @@ function TabNav({ activeTab }) {
             const active = activeTab === tab;
             return /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])(__TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$client$2f$app$2d$dir$2f$link$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["default"], {
                 href: tabHref(tab),
-                className: `px-4 py-2 text-sm font-medium capitalize transition-colors border-b-2 -mb-px ${active ? "border-white text-white" : "border-transparent text-gray-500 hover:text-gray-300"}`,
+                className: `px-4 py-2 text-sm font-medium capitalize transition-colors border-b-2 -mb-px ${active ? "border-[#45bfff] text-white" : "border-transparent text-[#4a6899] hover:text-[#6a90cc]"}`,
                 children: tab === "upcoming" ? "Upcoming" : "Results"
             }, tab, false, {
                 fileName: "[project]/app/predictions/TabNav.tsx",
@@ -696,7 +696,7 @@ function TeamFilter({ teams, selectedId }) {
     return /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("select", {
         value: selectedId ?? "",
         onChange: (e)=>onChange(e.target.value),
-        className: "bg-gray-900 border border-gray-700 text-gray-300 text-sm rounded-lg px-3 py-2 focus:outline-none focus:border-gray-500",
+        className: "bg-[#060f2a] border border-[#142655] text-[#90b8e8] text-sm rounded-lg px-3 py-2 focus:outline-none focus:border-[#1e4488]",
         children: [
             /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("option", {
                 value: "",

@@ -1,8 +1,8 @@
 @import "tailwindcss";
 
 :root {
-  --background: #ffffff;
-  --foreground: #171717;
+  --background: #04091e;
+  --foreground: #e8eef8;
 }
 
 @theme inline {
@@ -12,15 +12,112 @@
   --font-mono: var(--font-geist-mono);
 }
 
-@media (prefers-color-scheme: dark) {
-  :root {
-    --background: #0a0a0a;
-    --foreground: #ededed;
-  }
+html {
+  color-scheme: dark;
 }
 
 body {
   background: var(--background);
   color: var(--foreground);
-  font-family: Arial, Helvetica, sans-serif;
+  font-family: var(--font-sans), Arial, Helvetica, sans-serif;
+  background-image:
+    radial-gradient(1.5px 1.5px at 5% 8%, rgba(255,255,255,0.65) 0%, transparent 100%),
+    radial-gradient(1px 1px at 14% 18%, rgba(255,255,255,0.4) 0%, transparent 100%),
+    radial-gradient(1px 1px at 22% 4%, rgba(255,255,255,0.5) 0%, transparent 100%),
+    radial-gradient(2px 2px at 32% 14%, rgba(255,255,255,0.55) 0%, transparent 100%),
+    radial-gradient(1px 1px at 44% 3%, rgba(255,255,255,0.38) 0%, transparent 100%),
+    radial-gradient(1px 1px at 54% 20%, rgba(255,255,255,0.48) 0%, transparent 100%),
+    radial-gradient(1.5px 1.5px at 67% 7%, rgba(255,255,255,0.62) 0%, transparent 100%),
+    radial-gradient(1px 1px at 77% 24%, rgba(255,255,255,0.32) 0%, transparent 100%),
+    radial-gradient(1px 1px at 87% 11%, rgba(255,255,255,0.44) 0%, transparent 100%),
+    radial-gradient(1.5px 1.5px at 94% 28%, rgba(255,255,255,0.52) 0%, transparent 100%),
+    radial-gradient(1px 1px at 2% 36%, rgba(255,255,255,0.38) 0%, transparent 100%),
+    radial-gradient(1px 1px at 16% 44%, rgba(255,255,255,0.48) 0%, transparent 100%),
+    radial-gradient(2px 2px at 27% 33%, rgba(255,255,255,0.6) 0%, transparent 100%),
+    radial-gradient(1px 1px at 41% 41%, rgba(255,255,255,0.28) 0%, transparent 100%),
+    radial-gradient(1px 1px at 51% 53%, rgba(255,255,255,0.38) 0%, transparent 100%),
+    radial-gradient(1.5px 1.5px at 61% 36%, rgba(255,255,255,0.58) 0%, transparent 100%),
+    radial-gradient(1px 1px at 74% 47%, rgba(255,255,255,0.42) 0%, transparent 100%),
+    radial-gradient(1px 1px at 84% 38%, rgba(255,255,255,0.48) 0%, transparent 100%),
+    radial-gradient(1.5px 1.5px at 91% 50%, rgba(255,255,255,0.52) 0%, transparent 100%),
+    radial-gradient(1px 1px at 9% 56%, rgba(255,255,255,0.38) 0%, transparent 100%),
+    radial-gradient(1px 1px at 19% 61%, rgba(255,255,255,0.32) 0%, transparent 100%),
+    radial-gradient(1px 1px at 36% 64%, rgba(255,255,255,0.48) 0%, transparent 100%),
+    radial-gradient(1.5px 1.5px at 47% 71%, rgba(255,255,255,0.58) 0%, transparent 100%),
+    radial-gradient(1px 1px at 57% 58%, rgba(255,255,255,0.38) 0%, transparent 100%),
+    radial-gradient(1px 1px at 71% 66%, rgba(255,255,255,0.44) 0%, transparent 100%),
+    radial-gradient(2px 2px at 81% 60%, rgba(255,255,255,0.62) 0%, transparent 100%),
+    radial-gradient(1px 1px at 4% 70%, rgba(255,255,255,0.38) 0%, transparent 100%),
+    radial-gradient(1px 1px at 13% 77%, rgba(255,255,255,0.28) 0%, transparent 100%),
+    radial-gradient(1.5px 1.5px at 24% 83%, rgba(255,255,255,0.52) 0%, transparent 100%),
+    radial-gradient(1px 1px at 39% 79%, rgba(255,255,255,0.38) 0%, transparent 100%),
+    radial-gradient(1px 1px at 56% 87%, rgba(255,255,255,0.44) 0%, transparent 100%),
+    radial-gradient(1px 1px at 64% 77%, rgba(255,255,255,0.48) 0%, transparent 100%),
+    radial-gradient(1px 1px at 77% 84%, rgba(255,255,255,0.32) 0%, transparent 100%),
+    radial-gradient(1.5px 1.5px at 89% 74%, rgba(255,255,255,0.58) 0%, transparent 100%),
+    radial-gradient(1px 1px at 6% 87%, rgba(255,255,255,0.38) 0%, transparent 100%),
+    radial-gradient(1px 1px at 21% 91%, rgba(255,255,255,0.32) 0%, transparent 100%),
+    radial-gradient(1px 1px at 37% 94%, rgba(255,255,255,0.44) 0%, transparent 100%),
+    radial-gradient(1.5px 1.5px at 59% 91%, rgba(255,255,255,0.52) 0%, transparent 100%),
+    radial-gradient(1px 1px at 76% 94%, rgba(255,255,255,0.38) 0%, transparent 100%),
+    radial-gradient(1px 1px at 90% 88%, rgba(255,255,255,0.48) 0%, transparent 100%),
+    radial-gradient(2px 2px at 48% 28%, rgba(69,191,255,0.55) 0%, transparent 100%),
+    radial-gradient(1.5px 1.5px at 72% 42%, rgba(74,141,248,0.5) 0%, transparent 100%),
+    radial-gradient(2px 2px at 18% 52%, rgba(69,191,255,0.45) 0%, transparent 100%),
+    radial-gradient(1.5px 1.5px at 85% 22%, rgba(74,141,248,0.48) 0%, transparent 100%),
+    radial-gradient(2px 2px at 33% 78%, rgba(69,191,255,0.42) 0%, transparent 100%);
+  background-size: 100% 100%;
+  background-attachment: fixed;
+  background-repeat: no-repeat;
+}
+
+/* ── Hero orb ── */
+.orb-breathe {
+  animation: orb-breathe 7s ease-in-out infinite;
+}
+.orbit-dot {
+  animation: orbit-spin 22s linear infinite;
+}
+.orbit-dot-slow {
+  animation: orbit-spin 40s linear infinite reverse;
+}
+
+@keyframes orb-breathe {
+  0%, 100% { opacity: 0.85; }
+  50%       { opacity: 1; }
+}
+
+@keyframes orbit-spin {
+  to { transform: rotateZ(-360deg); }
+}
+
+@keyframes ball-spin {
+  to { transform: rotateY(360deg); }
+}
+
+/* Per-character pixel-resolve entrance */
+@keyframes char-resolve {
+  0%   { opacity: 0; transform: scale(3.5); filter: blur(14px); }
+  45%  { opacity: 1; filter: blur(1px); }
+  100% { opacity: 1; transform: scale(1);   filter: blur(0);    }
+}
+
+.pixel-char {
+  display: inline-block;
+  animation: char-resolve 0.55s cubic-bezier(0.16, 1, 0.3, 1) both;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .pixel-char { animation: none; opacity: 1; }
+}
+
+.ball-spin {
+  animation: ball-spin 12s linear infinite;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .orb-breathe  { animation: fade-pulse 3s ease-in-out infinite; }
+  .orbit-dot,
+  .orbit-dot-slow,
+  .ball-spin    { animation: none; }
 }

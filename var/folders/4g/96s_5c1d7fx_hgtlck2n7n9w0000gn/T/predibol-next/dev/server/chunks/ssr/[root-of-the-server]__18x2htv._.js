@@ -336,7 +336,7 @@ async function PredictionsPage({ searchParams }) {
                             columnNumber: 11
                         }, this),
                         /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$rsc$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$rsc$5d$__$28$ecmascript$29$__["jsxDEV"])("p", {
-                            className: "text-sm text-gray-500 mt-1",
+                            className: "text-sm text-[#4a6899] mt-1",
                             children: "UEFA Champions League 2025/26"
                         }, void 0, false, {
                             fileName: "[project]/app/predictions/page.tsx",
@@ -371,7 +371,7 @@ async function PredictionsPage({ searchParams }) {
                     columnNumber: 9
                 }, this),
                 results.length === 0 ? /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$rsc$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$rsc$5d$__$28$ecmascript$29$__["jsxDEV"])("p", {
-                    className: "text-gray-500",
+                    className: "text-[#4a6899]",
                     children: "No finished matches yet."
                 }, void 0, false, {
                     fileName: "[project]/app/predictions/page.tsx",
@@ -488,7 +488,7 @@ async function PredictionsPage({ searchParams }) {
                         columnNumber: 9
                     }, this),
                     /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$rsc$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$rsc$5d$__$28$ecmascript$29$__["jsxDEV"])("p", {
-                        className: "text-sm text-gray-500 mt-1",
+                        className: "text-sm text-[#4a6899] mt-1",
                         children: "UEFA Champions League 2025/26"
                     }, void 0, false, {
                         fileName: "[project]/app/predictions/page.tsx",
@@ -520,7 +520,7 @@ async function PredictionsPage({ searchParams }) {
                 children: [
                     /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$rsc$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$rsc$5d$__$28$ecmascript$29$__["jsxDEV"])(__TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$rsc$2f$react$2e$js__$5b$app$2d$rsc$5d$__$28$ecmascript$29$__["Suspense"], {
                         fallback: /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$rsc$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$rsc$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
-                            className: "h-9 w-48 bg-gray-800 rounded-lg animate-pulse"
+                            className: "h-9 w-48 bg-[#060f2a] rounded-lg animate-pulse"
                         }, void 0, false, {
                             fileName: "[project]/app/predictions/page.tsx",
                             lineNumber: 201,
@@ -556,7 +556,7 @@ async function PredictionsPage({ searchParams }) {
                         columnNumber: 11
                     }, this),
                     teamParam && /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$rsc$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$rsc$5d$__$28$ecmascript$29$__["jsxDEV"])("span", {
-                        className: "text-xs text-gray-500",
+                        className: "text-xs text-[#4a6899]",
                         children: [
                             matches.length,
                             " match",
@@ -575,7 +575,7 @@ async function PredictionsPage({ searchParams }) {
                 columnNumber: 7
             }, this),
             matches.length === 0 ? /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$rsc$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$rsc$5d$__$28$ecmascript$29$__["jsxDEV"])("p", {
-                className: "text-gray-500",
+                className: "text-[#4a6899]",
                 children: "No upcoming matches found."
             }, void 0, false, {
                 fileName: "[project]/app/predictions/page.tsx",

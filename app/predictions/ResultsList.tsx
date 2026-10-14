@@ -51,17 +51,17 @@ export function AccuracySummary({ matches }: { matches: ResultMatch[] }) {
   const pct = Math.round((correct / withPred.length) * 100);
 
   return (
-    <div className="border border-gray-800 rounded-xl p-4 mb-6 flex items-center justify-between">
+    <div className="border border-[#142655] bg-[#060f2a] rounded-xl p-4 mb-6 flex items-center justify-between">
       <div>
-        <p className="text-sm text-gray-400">Model accuracy</p>
+        <p className="text-sm text-[#6a90cc]">Model accuracy</p>
         <p className="text-2xl font-bold mt-0.5">
           {pct}%
-          <span className="text-sm font-normal text-gray-500 ml-2">
+          <span className="text-sm font-normal text-[#4a6899] ml-2">
             {correct} / {withPred.length} correct
           </span>
         </p>
       </div>
-      <div className="w-24 h-2 rounded overflow-hidden bg-gray-800">
+      <div className="w-24 h-2 rounded overflow-hidden bg-[#142655]">
         <div
           className="h-full rounded"
           style={{
@@ -96,13 +96,13 @@ export function ResultsList({ matches }: { matches: ResultMatch[] }) {
             ? match.homeTeam.primaryColor
             : actual === "away"
             ? awayColor
-            : "#9ca3af";
+            : "#90b8e8";
 
         return (
           <li key={match.id}>
             <Link
               href={`/predictions/${match.id}`}
-              className="block border border-gray-800 rounded-xl p-4 hover:border-gray-600 transition-colors"
+              className="block border border-[#142655] bg-[#060f2a] rounded-xl p-4 hover:border-[#1e4488] transition-colors"
             >
               {/* Teams + score */}
               <div className="flex items-center gap-3">
@@ -111,7 +111,7 @@ export function ResultsList({ matches }: { matches: ResultMatch[] }) {
                   {match.homeTeam.logoUrl ? (
                     <Image src={match.homeTeam.logoUrl} alt={match.homeTeam.name} width={28} height={28} unoptimized className="shrink-0" />
                   ) : (
-                    <div className="w-7 h-7 rounded-full bg-gray-800 shrink-0" />
+                    <div className="w-7 h-7 rounded-full bg-[#060f2a] shrink-0" />
                   )}
                   <span className="font-semibold text-sm leading-tight text-right">
                     {match.homeTeam.name}
@@ -130,7 +130,7 @@ export function ResultsList({ matches }: { matches: ResultMatch[] }) {
                   {match.awayTeam.logoUrl ? (
                     <Image src={match.awayTeam.logoUrl} alt={match.awayTeam.name} width={28} height={28} unoptimized className="shrink-0" />
                   ) : (
-                    <div className="w-7 h-7 rounded-full bg-gray-800 shrink-0" />
+                    <div className="w-7 h-7 rounded-full bg-[#060f2a] shrink-0" />
                   )}
                   <span className="font-semibold text-sm leading-tight">
                     {match.awayTeam.name}
@@ -139,7 +139,7 @@ export function ResultsList({ matches }: { matches: ResultMatch[] }) {
               </div>
 
               {/* Date + stage */}
-              <div className="text-xs text-gray-500 mt-2 text-center">
+              <div className="text-xs text-[#4a6899] mt-2 text-center">
                 {new Date(match.matchDate).toLocaleDateString("en-US", {
                   weekday: "short", month: "short", day: "numeric", year: "numeric",
                 })}
@@ -148,9 +148,9 @@ export function ResultsList({ matches }: { matches: ResultMatch[] }) {
 
               {/* Prediction result */}
               <div className="mt-3 flex items-center justify-between text-xs">
-                <span className="text-gray-500">
+                <span className="text-[#4a6899]">
                   Winner:{" "}
-                  <span className="font-medium" style={{ color: winnerColor ?? "#9ca3af" }}>
+                  <span className="font-medium" style={{ color: winnerColor ?? "#90b8e8" }}>
                     {winnerName ?? "Draw"}
                   </span>
                 </span>
@@ -166,7 +166,7 @@ export function ResultsList({ matches }: { matches: ResultMatch[] }) {
                     {correct ? "✓ Correct" : "✗ Incorrect"}
                   </span>
                 ) : (
-                  <span className="text-gray-600 text-xs">No prediction</span>
+                  <span className="text-[#2a4a88] text-xs">No prediction</span>
                 )}
               </div>
             </Link>

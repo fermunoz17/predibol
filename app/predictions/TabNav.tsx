@@ -13,7 +13,7 @@ export function TabNav({ activeTab }: { activeTab: "upcoming" | "results" }) {
   }
 
   return (
-    <div className="flex border-b border-gray-800 mb-6">
+    <div className="flex border-b border-[#142655] mb-6">
       {(["upcoming", "results"] as const).map((tab) => {
         const active = activeTab === tab;
         return (
@@ -22,8 +22,8 @@ export function TabNav({ activeTab }: { activeTab: "upcoming" | "results" }) {
             href={tabHref(tab)}
             className={`px-4 py-2 text-sm font-medium capitalize transition-colors border-b-2 -mb-px ${
               active
-                ? "border-white text-white"
-                : "border-transparent text-gray-500 hover:text-gray-300"
+                ? "border-[#45bfff] text-white"
+                : "border-transparent text-[#4a6899] hover:text-[#6a90cc]"
             }`}
           >
             {tab === "upcoming" ? "Upcoming" : "Results"}

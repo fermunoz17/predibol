@@ -47,10 +47,10 @@ function hex(color, fallback) {
 }
 function ChartCard({ title, children }) {
     return /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
-        className: "bg-gray-900 rounded-xl p-5",
+        className: "bg-[#060f2a] border border-[#142655] rounded-xl p-5",
         children: [
             /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("h3", {
-                className: "text-xs font-semibold uppercase tracking-wider text-gray-500 mb-4",
+                className: "text-xs font-semibold uppercase tracking-wider text-[#4a6899] mb-4",
                 children: title
             }, void 0, false, {
                 fileName: "[project]/app/predictions/[id]/MatchCharts.tsx",
@@ -78,7 +78,7 @@ function ProbabilityChart({ homeTeam, awayTeam, homeWinProb, drawProb, awayWinPr
         {
             name: "Draw",
             prob: Math.round(drawProb * 100),
-            fill: "#6b7280"
+            fill: "#4a6899"
         },
         {
             name: awayTeam,
@@ -107,7 +107,7 @@ function ProbabilityChart({ homeTeam, awayTeam, homeWinProb, drawProb, awayWinPr
                         ],
                         tickFormatter: (v)=>`${v}%`,
                         tick: {
-                            fill: "#6b7280",
+                            fill: "#4a6899",
                             fontSize: 11
                         },
                         axisLine: false,
@@ -122,7 +122,7 @@ function ProbabilityChart({ homeTeam, awayTeam, homeWinProb, drawProb, awayWinPr
                         dataKey: "name",
                         width: 120,
                         tick: {
-                            fill: "#d1d5db",
+                            fill: "#90b8e8",
                             fontSize: 12
                         },
                         axisLine: false,
@@ -138,12 +138,12 @@ function ProbabilityChart({ homeTeam, awayTeam, homeWinProb, drawProb, awayWinPr
                                 "Probability"
                             ],
                         contentStyle: {
-                            background: "#111827",
-                            border: "1px solid #374151",
+                            background: "#060f2a",
+                            border: "1px solid #142655",
                             borderRadius: 8
                         },
                         labelStyle: {
-                            color: "#f9fafb"
+                            color: "#90b8e8"
                         }
                     }, void 0, false, {
                         fileName: "[project]/app/predictions/[id]/MatchCharts.tsx",
@@ -160,7 +160,7 @@ function ProbabilityChart({ homeTeam, awayTeam, homeWinProb, drawProb, awayWinPr
                         ],
                         label: {
                             position: "right",
-                            fill: "#9ca3af",
+                            fill: "#6a90cc",
                             fontSize: 12,
                             formatter: (v)=>`${v}%`
                         },
@@ -236,7 +236,7 @@ function EloChart({ homeTeam, awayTeam, homeElo, awayElo, homeColor, awayColor }
                                 max
                             ],
                             tick: {
-                                fill: "#6b7280",
+                                fill: "#4a6899",
                                 fontSize: 11
                             },
                             axisLine: false,
@@ -251,7 +251,7 @@ function EloChart({ homeTeam, awayTeam, homeElo, awayElo, homeColor, awayColor }
                             dataKey: "name",
                             width: 120,
                             tick: {
-                                fill: "#d1d5db",
+                                fill: "#90b8e8",
                                 fontSize: 12
                             },
                             axisLine: false,
@@ -263,11 +263,11 @@ function EloChart({ homeTeam, awayTeam, homeElo, awayElo, homeColor, awayColor }
                         }, this),
                         /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])(__TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$recharts$2f$es6$2f$cartesian$2f$ReferenceLine$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["ReferenceLine"], {
                             x: 1500,
-                            stroke: "#374151",
+                            stroke: "#142655",
                             strokeDasharray: "4 4",
                             label: {
                                 value: "avg",
-                                fill: "#6b7280",
+                                fill: "#4a6899",
                                 fontSize: 10
                             }
                         }, void 0, false, {
@@ -281,12 +281,12 @@ function EloChart({ homeTeam, awayTeam, homeElo, awayElo, homeColor, awayColor }
                                     name === "effective" ? `Elo (incl. +${HOME_ADV} home adv.)` : "Elo"
                                 ],
                             contentStyle: {
-                                background: "#111827",
-                                border: "1px solid #374151",
+                                background: "#060f2a",
+                                border: "1px solid #142655",
                                 borderRadius: 8
                             },
                             labelStyle: {
-                                color: "#f9fafb"
+                                color: "#90b8e8"
                             }
                         }, void 0, false, {
                             fileName: "[project]/app/predictions/[id]/MatchCharts.tsx",
@@ -303,7 +303,7 @@ function EloChart({ homeTeam, awayTeam, homeElo, awayElo, homeColor, awayColor }
                             ],
                             label: {
                                 position: "right",
-                                fill: "#9ca3af",
+                                fill: "#6a90cc",
                                 fontSize: 12
                             },
                             children: data.map((entry)=>/*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])(__TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$recharts$2f$es6$2f$component$2f$Cell$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["Cell"], {
@@ -330,7 +330,7 @@ function EloChart({ homeTeam, awayTeam, homeElo, awayElo, homeColor, awayColor }
                 columnNumber: 7
             }, this),
             /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("p", {
-                className: "text-xs text-gray-600 mt-2",
+                className: "text-xs text-[#2a4a88] mt-2",
                 children: [
                     "Home team gets +",
                     HOME_ADV,
@@ -353,7 +353,7 @@ _c2 = EloChart;
 function TeamFormChart({ team, form, color }) {
     if (!form || form.length === 0) {
         return /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
-            className: "text-center text-xs text-gray-600 py-8",
+            className: "text-center text-xs text-[#2a4a88] py-8",
             children: [
                 "No domestic league form data available for ",
                 team,
@@ -395,7 +395,7 @@ function TeamFormChart({ team, form, color }) {
                     children: [
                         /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])(__TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$recharts$2f$es6$2f$cartesian$2f$CartesianGrid$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["CartesianGrid"], {
                             strokeDasharray: "3 3",
-                            stroke: "#1f2937"
+                            stroke: "#142655"
                         }, void 0, false, {
                             fileName: "[project]/app/predictions/[id]/MatchCharts.tsx",
                             lineNumber: 167,
@@ -404,7 +404,7 @@ function TeamFormChart({ team, form, color }) {
                         /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])(__TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$recharts$2f$es6$2f$cartesian$2f$XAxis$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["XAxis"], {
                             dataKey: "match",
                             tick: {
-                                fill: "#6b7280",
+                                fill: "#4a6899",
                                 fontSize: 10
                             },
                             axisLine: false,
@@ -416,7 +416,7 @@ function TeamFormChart({ team, form, color }) {
                         }, this),
                         /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])(__TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$recharts$2f$es6$2f$cartesian$2f$YAxis$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["YAxis"], {
                             tick: {
-                                fill: "#6b7280",
+                                fill: "#4a6899",
                                 fontSize: 10
                             },
                             axisLine: false,
@@ -429,12 +429,12 @@ function TeamFormChart({ team, form, color }) {
                         }, this),
                         /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])(__TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$recharts$2f$es6$2f$component$2f$Tooltip$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["Tooltip"], {
                             contentStyle: {
-                                background: "#111827",
-                                border: "1px solid #374151",
+                                background: "#060f2a",
+                                border: "1px solid #142655",
                                 borderRadius: 8
                             },
                             labelStyle: {
-                                color: "#9ca3af",
+                                color: "#6a90cc",
                                 fontSize: 11
                             }
                         }, void 0, false, {
@@ -460,7 +460,7 @@ function TeamFormChart({ team, form, color }) {
                         /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])(__TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$recharts$2f$es6$2f$cartesian$2f$Bar$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["Bar"], {
                             dataKey: "conceded",
                             name: "Conceded",
-                            fill: "#374151",
+                            fill: "#142655",
                             radius: [
                                 2,
                                 2,
@@ -484,7 +484,7 @@ function TeamFormChart({ team, form, color }) {
                 columnNumber: 7
             }, this),
             /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
-                className: "flex gap-4 mt-1 text-xs text-gray-500",
+                className: "flex gap-4 mt-1 text-xs text-[#4a6899]",
                 children: [
                     /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("span", {
                         children: [
@@ -508,7 +508,7 @@ function TeamFormChart({ team, form, color }) {
                     /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("span", {
                         children: [
                             /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("span", {
-                                className: "inline-block w-2 h-2 rounded-sm mr-1 bg-gray-700"
+                                className: "inline-block w-2 h-2 rounded-sm mr-1 bg-[#142655]"
                             }, void 0, false, {
                                 fileName: "[project]/app/predictions/[id]/MatchCharts.tsx",
                                 lineNumber: 179,
@@ -603,7 +603,7 @@ function AttackDefenceChart({ homeTeam, awayTeam, features, homeColor, awayColor
                     data: data,
                     children: [
                         /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])(__TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$recharts$2f$es6$2f$polar$2f$PolarGrid$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["PolarGrid"], {
-                            stroke: "#1f2937"
+                            stroke: "#142655"
                         }, void 0, false, {
                             fileName: "[project]/app/predictions/[id]/MatchCharts.tsx",
                             lineNumber: 232,
@@ -612,7 +612,7 @@ function AttackDefenceChart({ homeTeam, awayTeam, features, homeColor, awayColor
                         /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])(__TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$recharts$2f$es6$2f$polar$2f$PolarAngleAxis$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["PolarAngleAxis"], {
                             dataKey: "stat",
                             tick: {
-                                fill: "#9ca3af",
+                                fill: "#6a90cc",
                                 fontSize: 12
                             }
                         }, void 0, false, {
@@ -644,12 +644,12 @@ function AttackDefenceChart({ homeTeam, awayTeam, features, homeColor, awayColor
                         }, this),
                         /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])(__TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$recharts$2f$es6$2f$component$2f$Tooltip$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["Tooltip"], {
                             contentStyle: {
-                                background: "#111827",
-                                border: "1px solid #374151",
+                                background: "#060f2a",
+                                border: "1px solid #142655",
                                 borderRadius: 8
                             },
                             labelStyle: {
-                                color: "#9ca3af",
+                                color: "#6a90cc",
                                 fontSize: 11
                             }
                         }, void 0, false, {
@@ -669,7 +669,7 @@ function AttackDefenceChart({ homeTeam, awayTeam, features, homeColor, awayColor
                 columnNumber: 7
             }, this),
             /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
-                className: "flex justify-center gap-6 text-xs text-gray-500 mt-1",
+                className: "flex justify-center gap-6 text-xs text-[#4a6899] mt-1",
                 children: [
                     /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("span", {
                         children: [
@@ -716,7 +716,7 @@ function AttackDefenceChart({ homeTeam, awayTeam, features, homeColor, awayColor
                 columnNumber: 7
             }, this),
             /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("p", {
-                className: "text-xs text-gray-600 mt-2 text-center",
+                className: "text-xs text-[#2a4a88] mt-2 text-center",
                 children: "Defence = inverted goals conceded. Scoring Edge = team avg scored − opponent avg conceded."
             }, void 0, false, {
                 fileName: "[project]/app/predictions/[id]/MatchCharts.tsx",
@@ -778,7 +778,7 @@ function ScoringEdgeChart({ homeTeam, awayTeam, features, homeColor, awayColor }
                                 3
                             ],
                             tick: {
-                                fill: "#6b7280",
+                                fill: "#4a6899",
                                 fontSize: 11
                             },
                             axisLine: false,
@@ -793,7 +793,7 @@ function ScoringEdgeChart({ homeTeam, awayTeam, features, homeColor, awayColor }
                             dataKey: "label",
                             width: 160,
                             tick: {
-                                fill: "#d1d5db",
+                                fill: "#90b8e8",
                                 fontSize: 11
                             },
                             axisLine: false,
@@ -805,11 +805,11 @@ function ScoringEdgeChart({ homeTeam, awayTeam, features, homeColor, awayColor }
                         }, this),
                         /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])(__TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$recharts$2f$es6$2f$cartesian$2f$ReferenceLine$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["ReferenceLine"], {
                             x: 1.35,
-                            stroke: "#374151",
+                            stroke: "#142655",
                             strokeDasharray: "4 4",
                             label: {
                                 value: "avg",
-                                fill: "#6b7280",
+                                fill: "#4a6899",
                                 fontSize: 10
                             }
                         }, void 0, false, {
@@ -823,12 +823,12 @@ function ScoringEdgeChart({ homeTeam, awayTeam, features, homeColor, awayColor }
                                     "Goals / match"
                                 ],
                             contentStyle: {
-                                background: "#111827",
-                                border: "1px solid #374151",
+                                background: "#060f2a",
+                                border: "1px solid #142655",
                                 borderRadius: 8
                             },
                             labelStyle: {
-                                color: "#f9fafb"
+                                color: "#90b8e8"
                             }
                         }, void 0, false, {
                             fileName: "[project]/app/predictions/[id]/MatchCharts.tsx",
@@ -845,7 +845,7 @@ function ScoringEdgeChart({ homeTeam, awayTeam, features, homeColor, awayColor }
                             ],
                             label: {
                                 position: "right",
-                                fill: "#9ca3af",
+                                fill: "#6a90cc",
                                 fontSize: 11,
                                 formatter: (v)=>v.toFixed(2)
                             },
@@ -873,7 +873,7 @@ function ScoringEdgeChart({ homeTeam, awayTeam, features, homeColor, awayColor }
                 columnNumber: 7
             }, this),
             /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("p", {
-                className: "text-xs text-gray-600 mt-2",
+                className: "text-xs text-[#2a4a88] mt-2",
                 children: "If a team scores more than their opponent concedes on average, they have a positive scoring edge."
             }, void 0, false, {
                 fileName: "[project]/app/predictions/[id]/MatchCharts.tsx",
@@ -894,12 +894,12 @@ function StandingsStat({ label, home, away, higherIsBetter = true, homeColor, aw
     const homeLeads = higherIsBetter ? home > away : home < away;
     const awayLeads = higherIsBetter ? away > home : away < home;
     return /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
-        className: "grid grid-cols-3 items-center text-sm py-1.5 border-b border-gray-800 last:border-0",
+        className: "grid grid-cols-3 items-center text-sm py-1.5 border-b border-[#142655] last:border-0",
         children: [
             /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("span", {
                 className: "font-semibold",
                 style: {
-                    color: homeLeads ? homeColor : "#d1d5db"
+                    color: homeLeads ? homeColor : "#90b8e8"
                 },
                 children: home
             }, void 0, false, {
@@ -908,7 +908,7 @@ function StandingsStat({ label, home, away, higherIsBetter = true, homeColor, aw
                 columnNumber: 7
             }, this),
             /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("span", {
-                className: "text-center text-xs text-gray-500",
+                className: "text-center text-xs text-[#4a6899]",
                 children: label
             }, void 0, false, {
                 fileName: "[project]/app/predictions/[id]/MatchCharts.tsx",
@@ -918,7 +918,7 @@ function StandingsStat({ label, home, away, higherIsBetter = true, homeColor, aw
             /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("span", {
                 className: "font-semibold text-right",
                 style: {
-                    color: awayLeads ? awayColor : "#d1d5db"
+                    color: awayLeads ? awayColor : "#90b8e8"
                 },
                 children: away
             }, void 0, false, {
@@ -966,7 +966,7 @@ function UclStandingsChart({ homeTeam, awayTeam, features, homeColor, awayColor 
         title: "UCL Standings This Season",
         children: [
             /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
-                className: "grid grid-cols-3 text-xs text-gray-500 mb-2",
+                className: "grid grid-cols-3 text-xs text-[#4a6899] mb-2",
                 children: [
                     /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("span", {
                         className: "font-medium truncate",
@@ -1030,10 +1030,10 @@ function UclStandingsChart({ homeTeam, awayTeam, features, homeColor, awayColor 
                         columnNumber: 11
                     }, this),
                     /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
-                        className: "grid grid-cols-3 items-center text-sm py-1.5 border-b border-gray-800",
+                        className: "grid grid-cols-3 items-center text-sm py-1.5 border-b border-[#142655]",
                         children: [
                             /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("span", {
-                                className: "text-gray-300",
+                                className: "text-[#90b8e8]",
                                 children: [
                                     h.won,
                                     "W ",
@@ -1048,7 +1048,7 @@ function UclStandingsChart({ homeTeam, awayTeam, features, homeColor, awayColor 
                                 columnNumber: 13
                             }, this),
                             /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("span", {
-                                className: "text-center text-xs text-gray-500",
+                                className: "text-center text-xs text-[#4a6899]",
                                 children: "Record"
                             }, void 0, false, {
                                 fileName: "[project]/app/predictions/[id]/MatchCharts.tsx",
@@ -1056,7 +1056,7 @@ function UclStandingsChart({ homeTeam, awayTeam, features, homeColor, awayColor 
                                 columnNumber: 13
                             }, this),
                             /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("span", {
-                                className: "text-gray-300 text-right",
+                                className: "text-[#90b8e8] text-right",
                                 children: [
                                     a.won,
                                     "W ",
@@ -1136,7 +1136,7 @@ function UclStandingsChart({ homeTeam, awayTeam, features, homeColor, awayColor 
                                     children: [
                                         /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])(__TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$recharts$2f$es6$2f$cartesian$2f$CartesianGrid$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["CartesianGrid"], {
                                             strokeDasharray: "3 3",
-                                            stroke: "#1f2937"
+                                            stroke: "#142655"
                                         }, void 0, false, {
                                             fileName: "[project]/app/predictions/[id]/MatchCharts.tsx",
                                             lineNumber: 361,
@@ -1145,7 +1145,7 @@ function UclStandingsChart({ homeTeam, awayTeam, features, homeColor, awayColor 
                                         /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])(__TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$recharts$2f$es6$2f$cartesian$2f$XAxis$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["XAxis"], {
                                             dataKey: "stat",
                                             tick: {
-                                                fill: "#6b7280",
+                                                fill: "#4a6899",
                                                 fontSize: 10
                                             },
                                             axisLine: false,
@@ -1157,7 +1157,7 @@ function UclStandingsChart({ homeTeam, awayTeam, features, homeColor, awayColor 
                                         }, this),
                                         /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])(__TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$recharts$2f$es6$2f$cartesian$2f$YAxis$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["YAxis"], {
                                             tick: {
-                                                fill: "#6b7280",
+                                                fill: "#4a6899",
                                                 fontSize: 10
                                             },
                                             axisLine: false,
@@ -1169,12 +1169,12 @@ function UclStandingsChart({ homeTeam, awayTeam, features, homeColor, awayColor 
                                         }, this),
                                         /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])(__TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$recharts$2f$es6$2f$component$2f$Tooltip$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["Tooltip"], {
                                             contentStyle: {
-                                                background: "#111827",
-                                                border: "1px solid #374151",
+                                                background: "#060f2a",
+                                                border: "1px solid #142655",
                                                 borderRadius: 8
                                             },
                                             labelStyle: {
-                                                color: "#9ca3af",
+                                                color: "#6a90cc",
                                                 fontSize: 11
                                             }
                                         }, void 0, false, {
@@ -1224,7 +1224,7 @@ function UclStandingsChart({ homeTeam, awayTeam, features, homeColor, awayColor 
                                 columnNumber: 15
                             }, this),
                             /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("p", {
-                                className: "text-xs text-gray-600 mt-1 text-center",
+                                className: "text-xs text-[#2a4a88] mt-1 text-center",
                                 children: "Goal Diff bar is offset by +5 so negative values are visible."
                             }, void 0, false, {
                                 fileName: "[project]/app/predictions/[id]/MatchCharts.tsx",
@@ -1243,7 +1243,7 @@ function UclStandingsChart({ homeTeam, awayTeam, features, homeColor, awayColor 
                 lineNumber: 342,
                 columnNumber: 9
             }, this) : /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
-                className: "text-xs text-gray-500 py-4 text-center",
+                className: "text-xs text-[#4a6899] py-4 text-center",
                 children: [
                     "Standings data available for ",
                     h ? homeTeam : awayTeam,

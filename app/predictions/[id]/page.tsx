@@ -59,13 +59,13 @@ export default async function MatchDetailPage({ params }: { params: Promise<{ id
 
   return (
     <main className="max-w-2xl mx-auto p-8">
-      <Link href="/predictions" className="text-sm text-gray-500 hover:text-gray-300 mb-6 inline-block">
+      <Link href="/predictions" className="text-sm text-[#4a6899] hover:text-[#6a90cc] mb-6 inline-block transition-colors">
         ← All predictions
       </Link>
 
       {/* Header */}
       <div className="mb-8">
-        <div className="text-xs text-gray-500 uppercase tracking-wider mb-1">
+        <div className="text-xs text-[#4a6899] uppercase tracking-wider mb-1">
           {match.competition} · {match.stage}
         </div>
         <div className="flex items-center gap-4 mt-2">
@@ -75,7 +75,7 @@ export default async function MatchDetailPage({ params }: { params: Promise<{ id
               <Image src={match.homeTeam.logoUrl} alt={match.homeTeam.name} width={40} height={40} unoptimized className="shrink-0" />
             )}
           </div>
-          <span className="text-gray-600 shrink-0 text-sm">vs</span>
+          <span className="text-[#2a4a88] shrink-0 text-sm">vs</span>
           <div className="flex items-center gap-3 flex-1">
             {match.awayTeam.logoUrl && (
               <Image src={match.awayTeam.logoUrl} alt={match.awayTeam.name} width={40} height={40} unoptimized className="shrink-0" />
@@ -83,7 +83,7 @@ export default async function MatchDetailPage({ params }: { params: Promise<{ id
             <h1 className="text-2xl font-bold">{match.awayTeam.name}</h1>
           </div>
         </div>
-        <div className="text-sm text-gray-500 text-center mt-1">
+        <div className="text-sm text-[#4a6899] text-center mt-1">
           {new Date(match.matchDate).toLocaleDateString("en-US", {
             weekday: "long", month: "long", day: "numeric", year: "numeric",
           })}
@@ -91,13 +91,13 @@ export default async function MatchDetailPage({ params }: { params: Promise<{ id
       </div>
 
       {pred == null ? (
-        <p className="text-gray-500">No prediction available for this match yet.</p>
+        <p className="text-[#4a6899]">No prediction available for this match yet.</p>
       ) : (
         <div className="space-y-6">
 
           {/* Predicted outcome callout */}
           <div className="text-center py-4">
-            <div className="text-xs text-gray-500 uppercase tracking-wider mb-1">Predicted outcome</div>
+            <div className="text-xs text-[#4a6899] uppercase tracking-wider mb-1">Predicted outcome</div>
             <div className="text-4xl font-bold">{outcomeLabel}</div>
           </div>
 
