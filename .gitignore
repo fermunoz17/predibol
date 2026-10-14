@@ -19,6 +19,7 @@
 
 # dev distDir accidentally created inside project (Next.js treats absolute distDir as relative)
 /Users/
+/var/
 
 # production
 /build

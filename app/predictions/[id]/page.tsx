@@ -11,23 +11,6 @@ import {
   UclStandingsChart,
 } from "./MatchCharts";
 
-const HOME_ADV = 100;
-
-function expectedScore(eloA: number, eloB: number) {
-  return 1 / (1 + Math.pow(10, (eloB - eloA) / 400));
-}
-
-function StatRow({ label, value, sub }: { label: string; value: string; sub?: string }) {
-  return (
-    <div className="flex justify-between items-baseline py-2 border-b border-gray-800 last:border-0">
-      <span className="text-gray-400 text-sm">{label}</span>
-      <div className="text-right">
-        <span className="font-mono font-semibold">{value}</span>
-        {sub && <div className="text-xs text-gray-600">{sub}</div>}
-      </div>
-    </div>
-  );
-}
 
 export default async function MatchDetailPage({ params }: { params: Promise<{ id: string }> }) {
   const { id } = await params;
@@ -48,8 +31,6 @@ export default async function MatchDetailPage({ params }: { params: Promise<{ id
   if (!match) notFound();
 
   const pred = match.modelPredictions[0] ?? null;
-  const modelRun = pred?.modelRun ?? null;
-  const metrics = modelRun?.metrics as Record<string, unknown> | null;
   const features = pred?.features as {
     home_form: { s: number; c: number }[];
     away_form: { s: number; c: number }[];
@@ -67,8 +48,6 @@ export default async function MatchDetailPage({ params }: { params: Promise<{ id
   const awayColor = match.awayTeam.secondaryColor ?? match.awayTeam.primaryColor;
 
   const hasElo = pred?.homeElo != null && pred?.awayElo != null;
-  const effectiveHomeElo = hasElo ? pred!.homeElo! + HOME_ADV : null;
-  const rawExpected = hasElo ? expectedScore(effectiveHomeElo!, pred!.awayElo!) : null;
 
   const outcomeLabel =
     pred == null ? null
@@ -181,72 +160,6 @@ export default async function MatchDetailPage({ params }: { params: Promise<{ id
             awayColor={awayColor}
           />
 
-          {/* The math */}
-          {hasElo && (
-            <div className="bg-gray-900 rounded-xl p-5">
-              <h2 className="text-xs font-semibold uppercase tracking-wider text-gray-500 mb-4">
-                How the probability is calculated
-              </h2>
-              <div className="space-y-4 text-sm text-gray-300">
-                <div>
-                  <div className="text-xs text-gray-500 mb-1">Step 1 — Elo expected score</div>
-                  <div className="font-mono text-xs bg-gray-800 rounded p-2 leading-5">
-                    E = 1 / (1 + 10^(−Δelo / 400))<br />
-                    E = 1 / (1 + 10^(−{Math.round(pred.eloDiff!)} / 400))<br />
-                    E = {rawExpected!.toFixed(4)}
-                  </div>
-                </div>
-                <div>
-                  <div className="text-xs text-gray-500 mb-1">Step 2 — Feature set fed to logistic regression</div>
-                  <div className="font-mono text-xs bg-gray-800 rounded p-2 leading-5">
-                    elo_diff          = {Math.round(pred.eloDiff!)}<br />
-                    home_scored_avg   = {features?.home_form_avg_scored?.toFixed(2) ?? "n/a"}<br />
-                    home_conceded_avg = {features?.home_form_avg_conceded?.toFixed(2) ?? "n/a"}<br />
-                    away_scored_avg   = {features?.away_form_avg_scored?.toFixed(2) ?? "n/a"}<br />
-                    away_conceded_avg = {features?.away_form_avg_conceded?.toFixed(2) ?? "n/a"}<br />
-                    home_scoring_edge = {features?.home_scoring_edge?.toFixed(2) ?? "n/a"}<br />
-                    away_scoring_edge = {features?.away_scoring_edge?.toFixed(2) ?? "n/a"}
-                  </div>
-                </div>
-                <div>
-                  <div className="text-xs text-gray-500 mb-1">Step 3 — Output probabilities</div>
-                  <div className="font-mono text-xs bg-gray-800 rounded p-2 leading-5">
-                    P(home win) = {(pred.homeWinProb * 100).toFixed(1)}%<br />
-                    P(draw)     = {(pred.drawProb * 100).toFixed(1)}%<br />
-                    P(away win) = {(pred.awayWinProb * 100).toFixed(1)}%
-                  </div>
-                </div>
-              </div>
-            </div>
-          )}
-
-          {/* Model info */}
-          {modelRun && (
-            <div className="bg-gray-900 rounded-xl p-5">
-              <h2 className="text-xs font-semibold uppercase tracking-wider text-gray-500 mb-4">Model info</h2>
-              <StatRow label="Version" value={modelRun.modelVersion} />
-              <StatRow
-                label="Trained"
-                value={new Date(modelRun.trainedAt).toLocaleDateString("en-US", {
-                  month: "short", day: "numeric", year: "numeric",
-                })}
-              />
-              {typeof metrics?.cv_accuracy_mean === "number" && (
-                <StatRow
-                  label="Cross-val accuracy"
-                  value={`${(metrics.cv_accuracy_mean * 100).toFixed(1)}% ± ${((metrics.cv_accuracy_std as number) * 100).toFixed(1)}%`}
-                  sub="5-fold CV on training data"
-                />
-              )}
-              {typeof metrics?.training_samples === "number" && (
-                <StatRow
-                  label="Training matches"
-                  value={(metrics.training_samples as number).toLocaleString()}
-                  sub="top 5 European leagues, 4 seasons"
-                />
-              )}
-            </div>
-          )}
 
         </div>
       )}

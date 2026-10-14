@@ -1,0 +1,35 @@
+name: Ingest UCL Fixtures
+
+on:
+  schedule:
+    # Every 30 minutes on Tuesdays and Wednesdays (UCL matchdays),
+    # covering 18:00–23:30 UTC (kick-offs are 18:45 or 21:00 UTC).
+    - cron: "*/30 18-23 * * 2,3"
+    # Once daily on other days to catch postponements / rescheduled matches.
+    - cron: "0 6 * * 0,1,4,5,6"
+  workflow_dispatch: # allow manual run from the Actions tab
+
+jobs:
+  ingest:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+
+      - uses: actions/setup-node@v4
+        with:
+          node-version: 20
+          cache: npm
+
+      - name: Install dependencies
+        run: npm ci
+
+      - name: Generate Prisma client
+        run: npx prisma generate
+        env:
+          DATABASE_URL: ${{ secrets.DATABASE_URL }}
+
+      - name: Ingest fixtures
+        run: npm run db:ingest-fixtures
+        env:
+          DATABASE_URL: ${{ secrets.DATABASE_URL }}
+          FOOTBALL_DATA_API_KEY: ${{ secrets.FOOTBALL_DATA_API_KEY }}

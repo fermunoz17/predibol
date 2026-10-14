@@ -36,7 +36,9 @@
     ".next/dev/types/**/*.ts",
     "**/*.mts",
     "/Users/fernandomunoz/.cache/predibol-next/types/**/*.ts",
-    "/Users/fernandomunoz/.cache/predibol-next/dev/types/**/*.ts"
+    "/Users/fernandomunoz/.cache/predibol-next/dev/types/**/*.ts",
+    "/var/folders/4g/96s_5c1d7fx_hgtlck2n7n9w0000gn/T/predibol-next/types/**/*.ts",
+    "/var/folders/4g/96s_5c1d7fx_hgtlck2n7n9w0000gn/T/predibol-next/dev/types/**/*.ts"
   ],
   "exclude": [
     "node_modules"

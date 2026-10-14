@@ -3,11 +3,11 @@ import { Suspense } from "react";
 import { MatchList } from "./MatchList";
 import { MatchdayNav } from "./MatchdayNav";
 import { TeamFilter } from "./TeamFilter";
+import { TabNav } from "./TabNav";
+import { ResultsList, AccuracySummary } from "./ResultsList";
+import type { ResultMatch } from "./ResultsList";
 
 // ── Matchday grouping ─────────────────────────────────────────────────────────
-// Groups match dates into "matchday windows": consecutive dates within 3 days
-// of each other form one window. UCL matchdays are always 2-day windows with
-// 2+ week gaps between them, so this reliably separates them.
 
 function buildMatchdayWindows(dates: Date[]): { start: number; end: number }[] {
   const days = [...new Set(dates.map((d) => new Date(d.toDateString()).getTime()))].sort(
@@ -44,12 +44,80 @@ function windowLabel(window: { start: number; end: number }): string {
 export default async function PredictionsPage({
   searchParams,
 }: {
-  searchParams: Promise<{ matchday?: string; team?: string }>;
+  searchParams: Promise<{ matchday?: string; team?: string; tab?: string }>;
 }) {
-  const { matchday: matchdayParam, team: teamParam } = await searchParams;
+  const { matchday: matchdayParam, team: teamParam, tab: tabParam } = await searchParams;
+  const activeTab = tabParam === "results" ? "results" : "upcoming";
 
+  // ── Results tab ──────────────────────────────────────────────────────────────
+  if (activeTab === "results") {
+    const raw = await prisma.match.findMany({
+      where: { competition: "UCL", status: "finished" },
+      include: {
+        homeTeam: true,
+        awayTeam: true,
+        modelPredictions: { orderBy: { createdAt: "desc" }, take: 1 },
+      },
+      orderBy: { matchDate: "desc" },
+    });
+
+    const results: ResultMatch[] = raw
+      .filter((m) => m.homeScore !== null && m.awayScore !== null)
+      .map((m) => {
+        const pred = m.modelPredictions[0] ?? null;
+        return {
+          id: m.id,
+          matchDate: m.matchDate,
+          stage: m.stage,
+          homeTeam: {
+            name: m.homeTeam.name,
+            logoUrl: m.homeTeam.logoUrl,
+            primaryColor: m.homeTeam.primaryColor,
+            secondaryColor: m.homeTeam.secondaryColor,
+          },
+          awayTeam: {
+            name: m.awayTeam.name,
+            logoUrl: m.awayTeam.logoUrl,
+            primaryColor: m.awayTeam.primaryColor,
+            secondaryColor: m.awayTeam.secondaryColor,
+          },
+          homeScore: m.homeScore!,
+          awayScore: m.awayScore!,
+          prediction: pred
+            ? {
+                homeWinProb: pred.homeWinProb,
+                drawProb: pred.drawProb,
+                awayWinProb: pred.awayWinProb,
+              }
+            : null,
+        };
+      });
+
+    return (
+      <main className="max-w-3xl mx-auto p-8">
+        <div className="mb-6">
+          <h1 className="text-3xl font-bold">Predictions</h1>
+          <p className="text-sm text-gray-500 mt-1">UEFA Champions League 2025/26</p>
+        </div>
+
+        <Suspense fallback={null}>
+          <TabNav activeTab="results" />
+        </Suspense>
+
+        <AccuracySummary matches={results} />
+
+        {results.length === 0 ? (
+          <p className="text-gray-500">No finished matches yet.</p>
+        ) : (
+          <ResultsList matches={results} />
+        )}
+      </main>
+    );
+  }
+
+  // ── Upcoming tab ─────────────────────────────────────────────────────────────
   const raw = await prisma.match.findMany({
-    where: { competition: "UCL", status: "scheduled" },
+    where: { competition: "UCL", status: { in: ["scheduled", "live"] } },
     include: {
       homeTeam: true,
       awayTeam: true,
@@ -58,10 +126,8 @@ export default async function PredictionsPage({
     orderBy: { matchDate: "asc" },
   });
 
-  // Build matchday windows from all match dates
   const windows = buildMatchdayWindows(raw.map((m) => m.matchDate));
 
-  // Default to the first window that hasn't fully passed
   const now = Date.now();
   const defaultIdx = windows.findIndex((w) => w.end >= now);
   const safeDefault = defaultIdx === -1 ? windows.length - 1 : defaultIdx;
@@ -70,7 +136,6 @@ export default async function PredictionsPage({
       ? Math.max(0, Math.min(parseInt(matchdayParam, 10), windows.length - 1))
       : safeDefault;
 
-  // All unique teams sorted for the dropdown
   const teamMap = new Map<string, { id: string; name: string }>();
   for (const m of raw) {
     teamMap.set(m.homeTeam.id, { id: m.homeTeam.id, name: m.homeTeam.name });
@@ -78,7 +143,6 @@ export default async function PredictionsPage({
   }
   const allTeams = [...teamMap.values()].sort((a, b) => a.name.localeCompare(b.name));
 
-  // Filter: team view (all matchdays) OR matchday view
   const window = windows[currentIdx];
   const filtered = raw.filter((m) => {
     if (teamParam) {
@@ -124,9 +188,13 @@ export default async function PredictionsPage({
   return (
     <main className="max-w-3xl mx-auto p-8">
       <div className="mb-6">
-        <h1 className="text-3xl font-bold">Upcoming Matches</h1>
-        <p className="text-sm text-gray-500 mt-1">Click a match to see the full prediction breakdown</p>
+        <h1 className="text-3xl font-bold">Predictions</h1>
+        <p className="text-sm text-gray-500 mt-1">UEFA Champions League 2025/26</p>
       </div>
+
+      <Suspense fallback={null}>
+        <TabNav activeTab="upcoming" />
+      </Suspense>
 
       {/* Controls */}
       <div className="flex items-center justify-between gap-4 mb-6">
@@ -152,7 +220,7 @@ export default async function PredictionsPage({
       </div>
 
       {matches.length === 0 ? (
-        <p className="text-gray-500">No matches found.</p>
+        <p className="text-gray-500">No upcoming matches found.</p>
       ) : (
         <MatchList matches={matches} />
       )}
