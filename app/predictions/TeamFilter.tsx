@@ -26,7 +26,7 @@ export function TeamFilter({ teams, selectedId }: { teams: Team[]; selectedId?: 
     <select
       value={selectedId ?? ""}
       onChange={(e) => onChange(e.target.value)}
-      className="bg-[#060f2a] border border-[#142655] text-[#90b8e8] text-sm rounded-lg px-3 py-2 focus:outline-none focus:border-[#1e4488]"
+      className="bg-[#060f2a] border border-[#142655] text-[#9fb0da] text-sm rounded-lg px-3 py-2 focus:outline-none focus:border-[#1e4488]"
     >
       <option value="">All teams</option>
       {teams.map((t) => (

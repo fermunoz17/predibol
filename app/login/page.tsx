@@ -11,7 +11,7 @@ export default function LoginPage() {
         <LoginForm />
         <p className="mt-6 text-center text-sm text-[#4a6899]">
           Don&apos;t have an account?{" "}
-          <a href="/signup" className="text-blue-600 hover:underline">
+          <a href="/signup" className="text-[#4FA3F7] hover:underline">
             Sign up
           </a>
         </p>

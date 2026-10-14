@@ -43,14 +43,14 @@ export default async function StandingsPage() {
                   <tr
                     key={s.id}
                     className={`border-b border-[#142655]/60 hover:bg-[#060f2a]/50 transition-colors ${
-                      i === 7 ? "border-b-2 border-blue-800" :
-                      i === 23 ? "border-b-2 border-yellow-800" : ""
+                      i === 7 ? "border-b-2 border-[#2457E6]" :
+                      i === 23 ? "border-b-2 border-[#F2C14E]/60" : ""
                     }`}
                   >
                     <td className="py-3 pr-4">
                       <span className={`text-xs font-semibold ${
-                        isTop8 ? "text-blue-400" :
-                        isPlayoff ? "text-yellow-400" :
+                        isTop8 ? "text-[#4FA3F7]" :
+                        isPlayoff ? "text-[#F2C14E]" :
                         "text-[#4a6899]"
                       }`}>
                         {s.rank}
@@ -72,18 +72,18 @@ export default async function StandingsPage() {
                         )}
                         <span className="font-medium">{s.team.name}</span>
                         {s.team.country && (
-                          <span className="text-xs text-[#2a4a88] hidden sm:inline">{s.team.country}</span>
+                          <span className="text-xs text-[#2a4a8a] hidden sm:inline">{s.team.country}</span>
                         )}
                       </div>
                     </td>
-                    <td className="py-3 text-center text-[#6a90cc] px-3">{s.played}</td>
-                    <td className="py-3 text-center text-green-400 px-3">{s.won}</td>
-                    <td className="py-3 text-center text-[#6a90cc] px-3">{s.drawn}</td>
+                    <td className="py-3 text-center text-[#9fb0da] px-3">{s.played}</td>
+                    <td className="py-3 text-center text-[#7BE33B] px-3">{s.won}</td>
+                    <td className="py-3 text-center text-[#9fb0da] px-3">{s.drawn}</td>
                     <td className="py-3 text-center text-red-400 px-3">{s.lost}</td>
-                    <td className="py-3 text-center text-[#6a90cc] px-3">{s.goalsFor}</td>
-                    <td className="py-3 text-center text-[#6a90cc] px-3">{s.goalsAgainst}</td>
+                    <td className="py-3 text-center text-[#9fb0da] px-3">{s.goalsFor}</td>
+                    <td className="py-3 text-center text-[#9fb0da] px-3">{s.goalsAgainst}</td>
                     <td className="py-3 text-center px-3">
-                      <span className={s.goalDifference > 0 ? "text-green-400" : s.goalDifference < 0 ? "text-red-400" : "text-[#6a90cc]"}>
+                      <span className={s.goalDifference > 0 ? "text-[#7BE33B]" : s.goalDifference < 0 ? "text-red-400" : "text-[#9fb0da]"}>
                         {s.goalDifference > 0 ? `+${s.goalDifference}` : s.goalDifference}
                       </span>
                     </td>
@@ -97,12 +97,12 @@ export default async function StandingsPage() {
           {/* Legend */}
           <div className="flex gap-6 mt-6 text-xs text-[#4a6899]">
             <div className="flex items-center gap-2">
-              <span className="inline-block w-3 h-0.5 bg-blue-800" />
-              <span className="text-blue-400">Top 8</span> — Round of 16 (direct)
+              <span className="inline-block w-3 h-0.5 bg-[#2457E6]" />
+              <span className="text-[#4FA3F7]">Top 8</span> — Round of 16 (direct)
             </div>
             <div className="flex items-center gap-2">
-              <span className="inline-block w-3 h-0.5 bg-yellow-800" />
-              <span className="text-yellow-400">9–24</span> — Knockout playoffs
+              <span className="inline-block w-3 h-0.5 bg-[#F2C14E]/60" />
+              <span className="text-[#F2C14E]">9–24</span> — Knockout playoffs
             </div>
             <div className="flex items-center gap-2">
               <span className="text-[#4a6899]">25–36</span> — Eliminated

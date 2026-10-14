@@ -1,10 +1,11 @@
 "use client";
+import { SpinningBall } from "../components/SpinningBall";
 
 import { useActionState } from "react";
 import { signupAction } from "@/app/actions/auth";
 
-const inputClass = "bg-[#060d1a] border border-[#1a2d4a] rounded-lg px-3 py-2.5 text-sm text-white placeholder-[#3a5a7a] focus:outline-none focus:border-[#2a4a7a] transition-colors w-full";
-const labelClass = "text-xs font-medium text-[#7a9cc0] uppercase tracking-wider";
+const inputClass = "bg-[#060f2a] border border-[#142655] rounded-lg px-3 py-2.5 text-sm text-white placeholder-[#4a6899] focus:outline-none focus:border-[#2a4a8a] transition-colors w-full";
+const labelClass = "text-xs font-medium text-[#9fb0da] uppercase tracking-wider";
 
 export function SignupForm() {
   const [state, action, pending] = useActionState(signupAction, null);
@@ -51,9 +52,9 @@ export function SignupForm() {
       <button
         type="submit"
         disabled={pending}
-        className="bg-blue-600 hover:bg-blue-500 text-white py-2.5 rounded-lg text-sm font-medium tracking-wide transition-colors disabled:opacity-50 shadow-[0_0_16px_rgba(59,130,246,0.2)] mt-1"
+        className="bg-[#2457E6] hover:bg-[#3a6cf0] text-white py-2.5 rounded-lg text-sm font-medium tracking-wide transition-colors disabled:opacity-50 shadow-[0_0_16px_rgba(36,87,230,0.2)] mt-1"
       >
-        {pending ? "Creating account…" : "Create account"}
+        {pending ? <span className="inline-flex items-center justify-center gap-2"><SpinningBall size={18} />Creating account…</span> : "Create account"}
       </button>
     </form>
   );

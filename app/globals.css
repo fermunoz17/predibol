@@ -71,6 +71,267 @@ body {
   background-repeat: no-repeat;
 }
 
+/* ── Logo Reveal ── */
+.logo-stage {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 28px;
+  width: 100%;
+  max-width: 1400px;
+  padding-block: 24px;
+}
+.logo-stage svg { display: block; width: 100%; height: auto; overflow: visible; }
+
+/* resting state */
+.travel  { transform: translate(205px, 290px); }
+.horizon { transform-box: fill-box; transform-origin: left center; }
+.letter  { transform-box: fill-box; transform-origin: left bottom; }
+.streak  { transform-box: fill-box; opacity: 0; }
+.streak.r { transform-origin: left center; }
+.streak.l { transform-origin: right center; }
+.shine, .flash, .glow { opacity: 0; }
+.flash { pointer-events: none; }
+
+/* play state */
+.play .travel  { animation: travel 0.8s 2.5s cubic-bezier(.55,0,.25,1.15) both; }
+.play .pop     { animation: pop 0.55s cubic-bezier(.2,1.6,.4,1) both, kick 0.35s 3.3s ease-out; }
+.play .streak  { animation: zip 0.75s cubic-bezier(.5,0,.2,1) both; animation-delay: var(--d); }
+.play .horizon { animation: reveal-line 0.6s 2.65s cubic-bezier(.7,0,.2,1) both; }
+.play .letter  { animation: slam 0.45s cubic-bezier(.15,1.45,.4,1) both; animation-delay: var(--d); }
+.play .flash   { animation: flash 0.5s 4.2s ease-out; }
+.play .shine   { animation: sweep 0.8s 4.4s ease-in-out both; }
+.play .glow    { animation: logo-glow 1.6s 4.6s ease-in-out both; }
+
+@keyframes pop   { from { transform: scale(0); } to { transform: scale(1); } }
+@keyframes kick  { 0%,100% { transform: scale(1); } 40% { transform: scale(1.08, 0.94); } }
+@keyframes travel { from { transform: translate(700px, 150px); } to { transform: translate(205px, 290px); } }
+@keyframes zip {
+  0%   { transform: scaleX(0); opacity: 1; }
+  55%  { transform: scaleX(1); opacity: 1; }
+  100% { transform: scaleX(1) translateX(var(--off)); opacity: 0; }
+}
+@keyframes reveal-line { from { transform: scaleX(0); } to { transform: scaleX(1); } }
+@keyframes slam {
+  0%   { transform: translateX(340px) skewX(-28deg); opacity: 0; }
+  35%  { opacity: 1; }
+  100% { transform: translateX(0) skewX(0); opacity: 1; }
+}
+@keyframes flash     { 0% { opacity: 0.45; } 100% { opacity: 0; } }
+@keyframes sweep     { from { transform: translateX(-300px); opacity: 1; } to { transform: translateX(1500px); opacity: 1; } }
+@keyframes logo-glow { 0% { opacity: 0; } 50% { opacity: 0.6; } 100% { opacity: 0.25; } }
+
+
+@media (prefers-reduced-motion: reduce) {
+  .play * { animation: none !important; }
+  .play .glow { opacity: 0.25; }
+}
+
+/* ── Hero copy (tagline + CTAs), timed to land after the logo reveal ── */
+.hero-word {
+  display: inline-block;
+  opacity: 0;
+  animation: hero-word-in 0.5s cubic-bezier(.2, 1.3, .4, 1) forwards;
+  animation-delay: calc(4.3s + var(--i) * 0.035s);
+}
+@keyframes hero-word-in {
+  from { opacity: 0; transform: translateY(0.7em) skewX(-14deg); filter: blur(4px); }
+  to   { opacity: 1; transform: none; filter: none; }
+}
+.hero-cta {
+  opacity: 0;
+  animation: hero-cta-in 0.55s cubic-bezier(.2, 1.5, .4, 1) forwards;
+}
+.hero-ctas .hero-cta:nth-child(1) { animation-delay: 5.2s; }
+.hero-ctas .hero-cta:nth-child(2) { animation-delay: 5.32s; }
+@keyframes hero-cta-in {
+  from { opacity: 0; transform: translateY(16px) scale(0.85); }
+  to   { opacity: 1; transform: none; }
+}
+.cta-primary { position: relative; overflow: hidden; }
+.cta-primary::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(100deg, transparent 30%, rgba(255,255,255,.55) 50%, transparent 70%);
+  transform: translateX(-120%);
+  animation: hero-cta-shine 0.7s 5.75s ease-in-out forwards;
+  pointer-events: none;
+}
+@keyframes hero-cta-shine { to { transform: translateX(120%); } }
+@media (prefers-reduced-motion: reduce) {
+  .hero-word, .hero-cta { animation: none; opacity: 1; }
+  .cta-primary::after { display: none; }
+}
+
+/* ── Feature: Your Predictions (PredictionsAnim.tsx) — 8s loop ──
+   0–2.6s  zoomed on one fixture: tap, green blink on the chosen shield, check
+   2.6–3.6s zoom out to the pick table
+   4.2–6.2s more picks light up, then fade and restart
+   Plays only while the card is hovered; otherwise (and for reduced motion) the
+   resting styles show the finished table. */
+.pa { display: block; width: 100%; height: auto; border-radius: 10px; font-family: inherit; }
+.pa-scene, .pa-table { transform-box: view-box; transform-origin: 0 0; }
+.pa-tap, .pa-check { transform-box: fill-box; transform-origin: center; }
+.pa-tap { opacity: 0; }
+.pa-dim { opacity: 0.4; }
+
+.feature-card:hover .pa-scene  { animation: pa-scene 8s linear infinite; }
+.feature-card:hover .pa-table  { animation: pa-zoom 8s ease-in-out infinite; }
+.feature-card:hover .pa-tap    { animation: pa-tap 8s ease-out infinite; }
+.feature-card:hover .pa-ring   { animation: pa-ring 8s linear infinite; }
+.feature-card:hover .pa-check  { animation: pa-check 8s cubic-bezier(.2,1.6,.4,1) infinite; }
+.feature-card:hover .pa-dim    { animation: pa-dim 8s ease-out infinite; }
+.feature-card:hover .pa-pick-1 { animation: pa-pick-1 8s linear infinite; }
+.feature-card:hover .pa-pick-2 { animation: pa-pick-2 8s linear infinite; }
+.feature-card:hover .pa-pick-3 { animation: pa-pick-3 8s linear infinite; }
+.feature-card:hover .pa-pick-4 { animation: pa-pick-4 8s linear infinite; }
+
+@keyframes pa-scene { 0% { opacity: 0; } 4%, 92% { opacity: 1; } 100% { opacity: 0; } }
+@keyframes pa-zoom {
+  0%, 32%   { transform: translate(9px, 10px) scale(3); }
+  45%, 100% { transform: translate(0, 0) scale(1); }
+}
+@keyframes pa-tap {
+  0%, 12% { opacity: 0; transform: scale(1.6); }
+  15%     { opacity: 0.9; transform: scale(1); }
+  18%     { opacity: 0.9; transform: scale(0.7); }
+  23%     { opacity: 0; transform: scale(2); }
+  100%    { opacity: 0; transform: scale(2); }
+}
+@keyframes pa-ring {
+  0%, 17% { opacity: 0; }
+  19% { opacity: 1; } 21% { opacity: 0.15; } 23% { opacity: 1; } 25% { opacity: 0.15; }
+  27%, 100% { opacity: 1; }
+}
+@keyframes pa-check {
+  0%, 24%   { opacity: 0; transform: scale(0); }
+  28%       { opacity: 1; transform: scale(1.3); }
+  31%, 100% { opacity: 1; transform: scale(1); }
+}
+@keyframes pa-dim { 0%, 26% { opacity: 1; } 31%, 100% { opacity: 0.4; } }
+@keyframes pa-pick-1 { 0%, 27% { opacity: 0; } 29% { opacity: 1; } 31% { opacity: 0.25; } 33%, 100% { opacity: 1; } }
+@keyframes pa-pick-2 { 0%, 52% { opacity: 0; } 54% { opacity: 1; } 56% { opacity: 0.25; } 58%, 100% { opacity: 1; } }
+@keyframes pa-pick-3 { 0%, 62% { opacity: 0; } 64% { opacity: 1; } 66% { opacity: 0.25; } 68%, 100% { opacity: 1; } }
+@keyframes pa-pick-4 { 0%, 72% { opacity: 0; } 74% { opacity: 1; } 76% { opacity: 0.25; } 78%, 100% { opacity: 1; } }
+
+@media (prefers-reduced-motion: reduce) {
+  .pa * { animation: none !important; }
+}
+
+/* ── Feature: Live Match Updates (LiveScoreAnim.tsx) — 8s loop, plays on card hover ──
+   0–2s    88', 1–1
+   2s      clock ticks to 89'
+   3s      home goal: crest shakes + green blink, GOAL!, home score flips 1 → 2
+   3.5–4.5s win probabilities swing to the home side
+   Resting styles = the final state (89', 2–1), also used for reduced motion. */
+.ls { display: block; width: 100%; height: auto; border-radius: 10px; font-family: inherit; }
+.ls-dot, .ls-flash, .ls-goal, .ls-shake, .ls-min89 { transform-box: fill-box; transform-origin: center; }
+.ls-bar-h { transform-box: fill-box; transform-origin: left center; transform: scaleX(0.81); }
+.ls-bar-a { transform-box: fill-box; transform-origin: right center; transform: scaleX(0.04); }
+.ls-min88, .ls-h-old, .ls-flash, .ls-goal, .ls-ring, .ls-pct-old { opacity: 0; }
+
+.feature-card:hover .ls-scene   { animation: ls-scene 8s linear infinite; }
+.feature-card:hover .ls-dot     { animation: ls-dot 1s ease-in-out infinite; }
+.feature-card:hover .ls-min88   { animation: ls-min88 8s linear infinite; }
+.feature-card:hover .ls-min89   { animation: ls-min89 8s ease-out infinite; }
+.feature-card:hover .ls-shake   { animation: ls-shake 8s ease-in-out infinite; }
+.feature-card:hover .ls-ring    { animation: ls-ring 8s linear infinite; }
+.feature-card:hover .ls-flash   { animation: ls-flash 8s ease-out infinite; }
+.feature-card:hover .ls-h-old   { animation: ls-h-old 8s ease-in infinite; }
+.feature-card:hover .ls-h-new   { animation: ls-h-new 8s cubic-bezier(.2,1.5,.4,1) infinite; }
+.feature-card:hover .ls-goal    { animation: ls-goal 8s cubic-bezier(.2,1.5,.4,1) infinite; }
+.feature-card:hover .ls-bar-h   { animation: ls-bar-h 8s ease-in-out infinite; }
+.feature-card:hover .ls-bar-a   { animation: ls-bar-a 8s ease-in-out infinite; }
+.feature-card:hover .ls-pct-old { animation: ls-pct-old 8s linear infinite; }
+.feature-card:hover .ls-pct-new { animation: ls-pct-new 8s linear infinite; }
+
+@keyframes ls-scene  { 0% { opacity: 0; } 4%, 95% { opacity: 1; } 100% { opacity: 0; } }
+@keyframes ls-dot    { 0%, 100% { opacity: 1; transform: scale(1); } 50% { opacity: 0.3; transform: scale(0.7); } }
+@keyframes ls-min88  { 0%, 24.5% { opacity: 1; } 25.5%, 100% { opacity: 0; } }
+@keyframes ls-min89  {
+  0%, 24.5% { opacity: 0; transform: scale(1); }
+  25.5%     { opacity: 1; transform: scale(1.35); }
+  29%, 100% { opacity: 1; transform: scale(1); }
+}
+@keyframes ls-shake {
+  0%, 37%  { transform: rotate(0) scale(1); }
+  39%      { transform: rotate(-8deg) scale(1.08); }
+  41%      { transform: rotate(7deg) scale(1.08); }
+  43%      { transform: rotate(-5deg) scale(1.05); }
+  45%      { transform: rotate(3deg) scale(1.02); }
+  47%, 100% { transform: rotate(0) scale(1); }
+}
+@keyframes ls-ring {
+  0%, 37% { opacity: 0; } 39% { opacity: 1; } 42% { opacity: 0.15; } 45% { opacity: 1; }
+  48% { opacity: 0.15; } 51% { opacity: 1; } 60%, 100% { opacity: 0; }
+}
+@keyframes ls-flash {
+  0%, 37%   { opacity: 0; transform: scale(0.4); }
+  40%       { opacity: 1; transform: scale(1.1); }
+  52%, 100% { opacity: 0; transform: scale(1.6); }
+}
+@keyframes ls-h-old {
+  0%, 38%   { opacity: 1; transform: translateY(0); }
+  41%, 100% { opacity: 0; transform: translateY(-34px); }
+}
+@keyframes ls-h-new {
+  0%, 39%   { opacity: 0; transform: translateY(34px); }
+  43%       { opacity: 1; transform: translateY(-3px); }
+  45%, 100% { opacity: 1; transform: translateY(0); }
+}
+@keyframes ls-goal {
+  0%, 38%   { opacity: 0; transform: scale(0.3); }
+  42%       { opacity: 1; transform: scale(1.2); }
+  45%, 72%  { opacity: 1; transform: scale(1); }
+  78%, 100% { opacity: 0; transform: scale(1); }
+}
+@keyframes ls-bar-h { 0%, 44% { transform: scaleX(0.34); } 57%, 100% { transform: scaleX(0.81); } }
+@keyframes ls-bar-a { 0%, 44% { transform: scaleX(0.28); } 57%, 100% { transform: scaleX(0.04); } }
+@keyframes ls-pct-old { 0%, 47% { opacity: 1; } 51%, 100% { opacity: 0; } }
+@keyframes ls-pct-new { 0%, 47% { opacity: 0; } 51%, 100% { opacity: 1; } }
+
+@media (prefers-reduced-motion: reduce) {
+  .ls * { animation: none !important; }
+}
+
+/* ── How it works (HowItWorks.tsx): plays once when scrolled into view ── */
+.hiw-num { font-family: var(--font-kanit), 'Arial Black', sans-serif; font-style: italic; font-weight: 900; line-height: 1.1; font-variant-numeric: tabular-nums; }
+.hiw-l { display: inline-block; }
+.hiw-bar { width: 44px; height: 3px; border-radius: 2px; background: #7BE33B; transform-origin: center; }
+.hiw-armed .hiw-item, .hiw-armed .hiw-eyebrow { opacity: 0; transform: translateY(18px); }
+.hiw-armed .hiw-bar { transform: scaleX(0); }
+.hiw-armed .hiw-l { opacity: 0; }
+.hiw-play .hiw-eyebrow { animation: hiw-up 0.5s ease-out both; }
+.hiw-play .hiw-item { animation: hiw-up 0.6s cubic-bezier(.2, 1.2, .4, 1) both; animation-delay: calc(var(--i) * 0.15s + 0.1s); }
+.hiw-play .hiw-bar { animation: hiw-bar 0.5s ease-out both; animation-delay: calc(var(--i) * 0.15s + 1.3s); }
+.hiw-play .hiw-l { animation: hiw-slam 0.45s cubic-bezier(.15, 1.45, .4, 1) both; animation-delay: calc(0.5s + var(--j) * 0.09s); }
+@keyframes hiw-up { from { opacity: 0; transform: translateY(18px); } to { opacity: 1; transform: none; } }
+@keyframes hiw-bar { from { transform: scaleX(0); } 70% { transform: scaleX(1.25); } to { transform: scaleX(1); } }
+@keyframes hiw-slam { 0% { opacity: 0; transform: translateX(40px) skewX(-24deg); } 40% { opacity: 1; } 100% { opacity: 1; transform: none; } }
+@media (prefers-reduced-motion: reduce) {
+  .hiw * { animation: none !important; opacity: 1 !important; transform: none !important; }
+}
+
+/* ── Spinning ball (SpinningBall.tsx): logo ball turning on a 45° tilted axis ── */
+.sb { display: inline-block; flex: none; overflow: visible; }
+.sb-roll { animation: sb-roll 2.6s linear infinite; }
+@keyframes sb-roll { from { transform: translate(0, 0); } to { transform: translate(280px, 0); } }
+.sb-bounce { animation: sb-bounce 1.1s cubic-bezier(.45, 0, .55, 1) infinite; }
+@keyframes sb-bounce { 0%, 100% { transform: translateY(0); } 50% { transform: translateY(-22px); } }
+.sb-shadow { background: radial-gradient(ellipse, rgba(36,87,230,0.55) 0%, transparent 75%); animation: sb-shadow 1.1s cubic-bezier(.45, 0, .55, 1) infinite; }
+@keyframes sb-shadow { 0%, 100% { transform: scaleX(1); opacity: 1; } 50% { transform: scaleX(0.6); opacity: 0.5; } }
+.nav-logo { display: block; overflow: visible; }
+.nav-logo .sb-roll { animation-play-state: paused; }
+a:hover .nav-logo .sb-roll, .nav-logo:hover .sb-roll { animation-play-state: running; }
+@media (prefers-reduced-motion: reduce) {
+  .sb-roll, .sb-bounce, .sb-shadow { animation: none; }
+}
+
+/* Hero type: Kanit (the logo's family), kept light: upright 300 for the tagline, 400 caps for buttons */
+.hero-tagline { font-family: var(--font-kanit), 'Arial Black', sans-serif; font-weight: 300; letter-spacing: 0.01em; }
+.hero-cta { font-family: var(--font-kanit), 'Arial Black', sans-serif; font-weight: 400; font-size: 0.875rem; text-transform: uppercase; letter-spacing: 0.1em; }
+
 /* ── Hero orb ── */
 .orb-breathe {
   animation: orb-breathe 7s ease-in-out infinite;

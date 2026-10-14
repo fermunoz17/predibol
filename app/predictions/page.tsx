@@ -1,3 +1,4 @@
+import { SpinningBall } from "../components/SpinningBall";
 import { prisma } from "@/lib/prisma";
 import { Suspense } from "react";
 import { MatchList } from "./MatchList";
@@ -198,7 +199,7 @@ export default async function PredictionsPage({
 
       {/* Controls */}
       <div className="flex items-center justify-between gap-4 mb-6">
-        <Suspense fallback={<div className="h-9 w-48 bg-[#060f2a] rounded-lg animate-pulse" />}>
+        <Suspense fallback={<div className="h-9 w-48 flex items-center justify-center" role="status" aria-label="Loading"><SpinningBall size={22} /></div>}>
           <TeamFilter teams={allTeams} selectedId={teamParam} />
         </Suspense>
 

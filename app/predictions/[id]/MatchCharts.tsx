@@ -34,8 +34,8 @@ interface Features {
   ucl_away: UclStanding | null;
 }
 
-const DEFAULT_HOME = "#3b82f6";
-const DEFAULT_AWAY = "#ef4444";
+const DEFAULT_HOME = "#4FA3F7";
+const DEFAULT_AWAY = "#E63946";
 
 function hex(color: string | null | undefined, fallback: string) {
   return color ?? fallback;
@@ -82,11 +82,11 @@ export function ProbabilityChart({ homeTeam, awayTeam, homeWinProb, drawProb, aw
           <XAxis type="number" domain={[0, 100]} tickFormatter={(v) => `${v}%`}
             tick={{ fill: "#4a6899", fontSize: 11 }} axisLine={false} tickLine={false} />
           <YAxis type="category" dataKey="name" width={120}
-            tick={{ fill: "#90b8e8", fontSize: 12 }} axisLine={false} tickLine={false} />
+            tick={{ fill: "#9fb0da", fontSize: 12 }} axisLine={false} tickLine={false} />
           <Tooltip formatter={(v) => [`${v}%`, "Probability"]}
             contentStyle={{ background: "#060f2a", border: "1px solid #142655", borderRadius: 8 }}
-            labelStyle={{ color: "#90b8e8" }} />
-          <Bar dataKey="prob" radius={[0, 4, 4, 0]} label={{ position: "right", fill: "#6a90cc", fontSize: 12, formatter: (v: unknown) => `${v}%` }}>
+            labelStyle={{ color: "#9fb0da" }} />
+          <Bar dataKey="prob" radius={[0, 4, 4, 0]} label={{ position: "right", fill: "#9fb0da", fontSize: 12, formatter: (v: unknown) => `${v}%` }}>
             {data.map((entry) => <Cell key={entry.name} fill={entry.fill} />)}
           </Bar>
         </BarChart>
@@ -121,19 +121,19 @@ export function EloChart({ homeTeam, awayTeam, homeElo, awayElo, homeColor, away
           <XAxis type="number" domain={[min, max]} tick={{ fill: "#4a6899", fontSize: 11 }}
             axisLine={false} tickLine={false} />
           <YAxis type="category" dataKey="name" width={120}
-            tick={{ fill: "#90b8e8", fontSize: 12 }} axisLine={false} tickLine={false} />
+            tick={{ fill: "#9fb0da", fontSize: 12 }} axisLine={false} tickLine={false} />
           <ReferenceLine x={1500} stroke="#142655" strokeDasharray="4 4" label={{ value: "avg", fill: "#4a6899", fontSize: 10 }} />
           <Tooltip
             formatter={(value, name) => [value, name === "effective" ? `Elo (incl. +${HOME_ADV} home adv.)` : "Elo"]}
             contentStyle={{ background: "#060f2a", border: "1px solid #142655", borderRadius: 8 }}
-            labelStyle={{ color: "#90b8e8" }} />
+            labelStyle={{ color: "#9fb0da" }} />
           <Bar dataKey="effective" radius={[0, 4, 4, 0]}
-            label={{ position: "right", fill: "#6a90cc", fontSize: 12 }}>
+            label={{ position: "right", fill: "#9fb0da", fontSize: 12 }}>
             {data.map((entry) => <Cell key={entry.name} fill={entry.fill} />)}
           </Bar>
         </BarChart>
       </ResponsiveContainer>
-      <p className="text-xs text-[#2a4a88] mt-2">
+      <p className="text-xs text-[#2a4a8a] mt-2">
         Home team gets +{HOME_ADV} Elo points added before comparison.
       </p>
     </ChartCard>
@@ -147,7 +147,7 @@ function TeamFormChart({ team, form, color }: {
 }) {
   if (!form || form.length === 0) {
     return (
-      <div className="text-center text-xs text-[#2a4a88] py-8">
+      <div className="text-center text-xs text-[#2a4a8a] py-8">
         No domestic league form data available for {team}.
       </div>
     );
@@ -169,7 +169,7 @@ function TeamFormChart({ team, form, color }: {
           <YAxis tick={{ fill: "#4a6899", fontSize: 10 }} axisLine={false} tickLine={false} allowDecimals={false} />
           <Tooltip
             contentStyle={{ background: "#060f2a", border: "1px solid #142655", borderRadius: 8 }}
-            labelStyle={{ color: "#6a90cc", fontSize: 11 }} />
+            labelStyle={{ color: "#9fb0da", fontSize: 11 }} />
           <Bar dataKey="scored" name="Scored" fill={color} radius={[2, 2, 0, 0]} />
           <Bar dataKey="conceded" name="Conceded" fill="#142655" radius={[2, 2, 0, 0]} />
         </BarChart>
@@ -230,19 +230,19 @@ export function AttackDefenceChart({ homeTeam, awayTeam, features, homeColor, aw
       <ResponsiveContainer width="100%" height={220}>
         <RadarChart data={data}>
           <PolarGrid stroke="#142655" />
-          <PolarAngleAxis dataKey="stat" tick={{ fill: "#6a90cc", fontSize: 12 }} />
+          <PolarAngleAxis dataKey="stat" tick={{ fill: "#9fb0da", fontSize: 12 }} />
           <Radar name={homeTeam} dataKey={homeTeam} stroke={hc} fill={hc} fillOpacity={0.2} />
           <Radar name={awayTeam} dataKey={awayTeam} stroke={ac} fill={ac} fillOpacity={0.2} />
           <Tooltip
             contentStyle={{ background: "#060f2a", border: "1px solid #142655", borderRadius: 8 }}
-            labelStyle={{ color: "#6a90cc", fontSize: 11 }} />
+            labelStyle={{ color: "#9fb0da", fontSize: 11 }} />
         </RadarChart>
       </ResponsiveContainer>
       <div className="flex justify-center gap-6 text-xs text-[#4a6899] mt-1">
         <span><span className="inline-block w-2 h-2 rounded-full mr-1" style={{ background: hc }} />{homeTeam}</span>
         <span><span className="inline-block w-2 h-2 rounded-full mr-1" style={{ background: ac }} />{awayTeam}</span>
       </div>
-      <p className="text-xs text-[#2a4a88] mt-2 text-center">
+      <p className="text-xs text-[#2a4a8a] mt-2 text-center">
         Defence = inverted goals conceded. Scoring Edge = team avg scored − opponent avg conceded.
       </p>
     </ChartCard>
@@ -274,19 +274,19 @@ export function ScoringEdgeChart({ homeTeam, awayTeam, features, homeColor, away
           <XAxis type="number" domain={[0, 3]} tick={{ fill: "#4a6899", fontSize: 11 }}
             axisLine={false} tickLine={false} />
           <YAxis type="category" dataKey="label" width={160}
-            tick={{ fill: "#90b8e8", fontSize: 11 }} axisLine={false} tickLine={false} />
+            tick={{ fill: "#9fb0da", fontSize: 11 }} axisLine={false} tickLine={false} />
           <ReferenceLine x={1.35} stroke="#142655" strokeDasharray="4 4"
             label={{ value: "avg", fill: "#4a6899", fontSize: 10 }} />
           <Tooltip formatter={(v: unknown) => [(v as number).toFixed(2), "Goals / match"]}
             contentStyle={{ background: "#060f2a", border: "1px solid #142655", borderRadius: 8 }}
-            labelStyle={{ color: "#90b8e8" }} />
+            labelStyle={{ color: "#9fb0da" }} />
           <Bar dataKey="value" radius={[0, 4, 4, 0]}
-            label={{ position: "right", fill: "#6a90cc", fontSize: 11, formatter: (v: unknown) => (v as number).toFixed(2) }}>
+            label={{ position: "right", fill: "#9fb0da", fontSize: 11, formatter: (v: unknown) => (v as number).toFixed(2) }}>
             {data.map((entry) => <Cell key={entry.label} fill={entry.fill} />)}
           </Bar>
         </BarChart>
       </ResponsiveContainer>
-      <p className="text-xs text-[#2a4a88] mt-2">
+      <p className="text-xs text-[#2a4a8a] mt-2">
         If a team scores more than their opponent concedes on average, they have a positive scoring edge.
       </p>
     </ChartCard>
@@ -304,9 +304,9 @@ function StandingsStat({ label, home, away, higherIsBetter = true, homeColor, aw
   const awayLeads = higherIsBetter ? away > home : away < home;
   return (
     <div className="grid grid-cols-3 items-center text-sm py-1.5 border-b border-[#142655] last:border-0">
-      <span className="font-semibold" style={{ color: homeLeads ? homeColor : "#90b8e8" }}>{home}</span>
+      <span className="font-semibold" style={{ color: homeLeads ? homeColor : "#9fb0da" }}>{home}</span>
       <span className="text-center text-xs text-[#4a6899]">{label}</span>
-      <span className="font-semibold text-right" style={{ color: awayLeads ? awayColor : "#90b8e8" }}>{away}</span>
+      <span className="font-semibold text-right" style={{ color: awayLeads ? awayColor : "#9fb0da" }}>{away}</span>
     </div>
   );
 }
@@ -343,9 +343,9 @@ export function UclStandingsChart({ homeTeam, awayTeam, features, homeColor, awa
           <StandingsStat label="Rank"    home={h.rank} away={a.rank} higherIsBetter={false} homeColor={hc} awayColor={ac} />
           <StandingsStat label="Points"  home={h.pts}  away={a.pts}  homeColor={hc} awayColor={ac} />
           <div className="grid grid-cols-3 items-center text-sm py-1.5 border-b border-[#142655]">
-            <span className="text-[#90b8e8]">{h.won}W {h.drawn}D {h.lost}L</span>
+            <span className="text-[#9fb0da]">{h.won}W {h.drawn}D {h.lost}L</span>
             <span className="text-center text-xs text-[#4a6899]">Record</span>
-            <span className="text-[#90b8e8] text-right">{a.won}W {a.drawn}D {a.lost}L</span>
+            <span className="text-[#9fb0da] text-right">{a.won}W {a.drawn}D {a.lost}L</span>
           </div>
           <StandingsStat label="Goals For"  home={h.gf} away={a.gf}  homeColor={hc} awayColor={ac} />
           <StandingsStat label="Goals Agst" home={h.ga} away={a.ga} higherIsBetter={false} homeColor={hc} awayColor={ac} />
@@ -363,12 +363,12 @@ export function UclStandingsChart({ homeTeam, awayTeam, features, homeColor, awa
                   <YAxis tick={{ fill: "#4a6899", fontSize: 10 }} axisLine={false} tickLine={false} />
                   <Tooltip
                     contentStyle={{ background: "#060f2a", border: "1px solid #142655", borderRadius: 8 }}
-                    labelStyle={{ color: "#6a90cc", fontSize: 11 }} />
+                    labelStyle={{ color: "#9fb0da", fontSize: 11 }} />
                   <Bar dataKey="home" name={homeTeam} fill={hc} radius={[2, 2, 0, 0]} />
                   <Bar dataKey="away" name={awayTeam} fill={ac} radius={[2, 2, 0, 0]} />
                 </BarChart>
               </ResponsiveContainer>
-              <p className="text-xs text-[#2a4a88] mt-1 text-center">
+              <p className="text-xs text-[#2a4a8a] mt-1 text-center">
                 Goal Diff bar is offset by +5 so negative values are visible.
               </p>
             </div>

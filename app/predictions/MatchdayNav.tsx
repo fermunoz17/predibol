@@ -22,15 +22,15 @@ export function MatchdayNav({ currentIdx, total, label }: Props) {
   return (
     <div className="flex items-center gap-3 text-sm">
       {currentIdx > 0 ? (
-        <Link href={href(currentIdx - 1)} className="text-[#6a90cc] hover:text-[#45bfff] px-1 transition-colors">←</Link>
+        <Link href={href(currentIdx - 1)} className="text-[#9fb0da] hover:text-[#7BE33B] px-1 transition-colors">←</Link>
       ) : (
-        <span className="text-[#2a4a88] px-1">←</span>
+        <span className="text-[#2a4a8a] px-1">←</span>
       )}
-      <span className="text-[#90b8e8] min-w-[140px] text-center">{label}</span>
+      <span className="text-[#9fb0da] min-w-[140px] text-center">{label}</span>
       {currentIdx < total - 1 ? (
-        <Link href={href(currentIdx + 1)} className="text-[#6a90cc] hover:text-[#45bfff] px-1 transition-colors">→</Link>
+        <Link href={href(currentIdx + 1)} className="text-[#9fb0da] hover:text-[#7BE33B] px-1 transition-colors">→</Link>
       ) : (
-        <span className="text-[#2a4a88] px-1">→</span>
+        <span className="text-[#2a4a8a] px-1">→</span>
       )}
     </div>
   );

@@ -46,6 +46,7 @@ __pycache__/
 *.pyc
 
 # claude / editor
+.claude/
 .agents/
 .mcp.json
 .vscode/

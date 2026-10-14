@@ -59,7 +59,7 @@ export default async function MatchDetailPage({ params }: { params: Promise<{ id
 
   return (
     <main className="max-w-2xl mx-auto p-8">
-      <Link href="/predictions" className="text-sm text-[#4a6899] hover:text-[#6a90cc] mb-6 inline-block transition-colors">
+      <Link href="/predictions" className="text-sm text-[#4a6899] hover:text-[#9fb0da] mb-6 inline-block transition-colors">
         ← All predictions
       </Link>
 
@@ -75,7 +75,7 @@ export default async function MatchDetailPage({ params }: { params: Promise<{ id
               <Image src={match.homeTeam.logoUrl} alt={match.homeTeam.name} width={40} height={40} unoptimized className="shrink-0" />
             )}
           </div>
-          <span className="text-[#2a4a88] shrink-0 text-sm">vs</span>
+          <span className="text-[#2a4a8a] shrink-0 text-sm">vs</span>
           <div className="flex items-center gap-3 flex-1">
             {match.awayTeam.logoUrl && (
               <Image src={match.awayTeam.logoUrl} alt={match.awayTeam.name} width={40} height={40} unoptimized className="shrink-0" />

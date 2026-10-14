@@ -22,8 +22,8 @@ export function TabNav({ activeTab }: { activeTab: "upcoming" | "results" }) {
             href={tabHref(tab)}
             className={`px-4 py-2 text-sm font-medium capitalize transition-colors border-b-2 -mb-px ${
               active
-                ? "border-[#45bfff] text-white"
-                : "border-transparent text-[#4a6899] hover:text-[#6a90cc]"
+                ? "border-[#7BE33B] text-white"
+                : "border-transparent text-[#4a6899] hover:text-[#9fb0da]"
             }`}
           >
             {tab === "upcoming" ? "Upcoming" : "Results"}

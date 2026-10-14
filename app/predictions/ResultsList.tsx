@@ -53,7 +53,7 @@ export function AccuracySummary({ matches }: { matches: ResultMatch[] }) {
   return (
     <div className="border border-[#142655] bg-[#060f2a] rounded-xl p-4 mb-6 flex items-center justify-between">
       <div>
-        <p className="text-sm text-[#6a90cc]">Model accuracy</p>
+        <p className="text-sm text-[#9fb0da]">Model accuracy</p>
         <p className="text-2xl font-bold mt-0.5">
           {pct}%
           <span className="text-sm font-normal text-[#4a6899] ml-2">
@@ -66,7 +66,7 @@ export function AccuracySummary({ matches }: { matches: ResultMatch[] }) {
           className="h-full rounded"
           style={{
             width: `${pct}%`,
-            background: pct >= 60 ? "#22c55e" : pct >= 40 ? "#eab308" : "#ef4444",
+            background: pct >= 60 ? "#7BE33B" : pct >= 40 ? "#F2C14E" : "#E63946",
           }}
         />
       </div>
@@ -96,7 +96,7 @@ export function ResultsList({ matches }: { matches: ResultMatch[] }) {
             ? match.homeTeam.primaryColor
             : actual === "away"
             ? awayColor
-            : "#90b8e8";
+            : "#9fb0da";
 
         return (
           <li key={match.id}>
@@ -150,7 +150,7 @@ export function ResultsList({ matches }: { matches: ResultMatch[] }) {
               <div className="mt-3 flex items-center justify-between text-xs">
                 <span className="text-[#4a6899]">
                   Winner:{" "}
-                  <span className="font-medium" style={{ color: winnerColor ?? "#90b8e8" }}>
+                  <span className="font-medium" style={{ color: winnerColor ?? "#9fb0da" }}>
                     {winnerName ?? "Draw"}
                   </span>
                 </span>
@@ -159,14 +159,14 @@ export function ResultsList({ matches }: { matches: ResultMatch[] }) {
                   <span
                     className={`px-2 py-0.5 rounded-full text-xs font-medium ${
                       correct
-                        ? "bg-green-900/40 text-green-400"
+                        ? "bg-[#7BE33B]/15 text-[#7BE33B]"
                         : "bg-red-900/40 text-red-400"
                     }`}
                   >
                     {correct ? "✓ Correct" : "✗ Incorrect"}
                   </span>
                 ) : (
-                  <span className="text-[#2a4a88] text-xs">No prediction</span>
+                  <span className="text-[#2a4a8a] text-xs">No prediction</span>
                 )}
               </div>
             </Link>

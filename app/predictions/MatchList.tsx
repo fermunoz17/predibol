@@ -50,18 +50,18 @@ function ProbBar({ homeProb, drawProb, awayProb, homeColor, awayColor }: {
 }) {
   return (
     <div className="w-full flex rounded overflow-hidden h-2">
-      <div style={{ width: `${homeProb * 100}%`, background: homeColor ?? "#3b82f6" }} />
+      <div style={{ width: `${homeProb * 100}%`, background: homeColor ?? "#4FA3F7" }} />
       <div className="bg-[#4a6899]" style={{ width: `${drawProb * 100}%` }} />
-      <div style={{ width: `${awayProb * 100}%`, background: awayColor ?? "#ef4444" }} />
+      <div style={{ width: `${awayProb * 100}%`, background: awayColor ?? "#E63946" }} />
     </div>
   );
 }
 
 function outcomeLabel(pred: Prediction, homeTeam: string, awayTeam: string, homeColor: string | null, awayColor: string | null) {
   const max = Math.max(pred.homeWinProb, pred.drawProb, pred.awayWinProb);
-  if (max === pred.homeWinProb) return { label: `${homeTeam} to win`, color: homeColor ?? "#3b82f6", isTeam: true };
-  if (max === pred.drawProb) return { label: "Draw likely", color: "#90b8e8", isTeam: false };
-  return { label: `${awayTeam} to win`, color: awayColor ?? "#ef4444", isTeam: true };
+  if (max === pred.homeWinProb) return { label: `${homeTeam} to win`, color: homeColor ?? "#4FA3F7", isTeam: true };
+  if (max === pred.drawProb) return { label: "Draw likely", color: "#9fb0da", isTeam: false };
+  return { label: `${awayTeam} to win`, color: awayColor ?? "#E63946", isTeam: true };
 }
 
 export function MatchList({ matches }: { matches: Match[] }) {
@@ -101,9 +101,9 @@ export function MatchList({ matches }: { matches: Match[] }) {
                     awayColor={awayColor}
                   />
                   <div className="flex justify-between text-xs mt-1">
-                    <span style={{ color: match.homeTeam.primaryColor ?? "#3b82f6" }}>{(pred.homeWinProb * 100).toFixed(0)}%</span>
+                    <span style={{ color: match.homeTeam.primaryColor ?? "#4FA3F7" }}>{(pred.homeWinProb * 100).toFixed(0)}%</span>
                     <span className="font-medium" style={{ color: outcome?.color }}>{outcome?.label}</span>
-                    <span style={{ color: awayColor ?? "#ef4444" }}>{(pred.awayWinProb * 100).toFixed(0)}%</span>
+                    <span style={{ color: awayColor ?? "#E63946" }}>{(pred.awayWinProb * 100).toFixed(0)}%</span>
                   </div>
                 </div>
               )}

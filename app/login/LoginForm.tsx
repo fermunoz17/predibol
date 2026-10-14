@@ -1,4 +1,5 @@
 "use client";
+import { SpinningBall } from "../components/SpinningBall";
 
 import { useActionState } from "react";
 import { loginAction } from "@/app/actions/auth";
@@ -15,7 +16,7 @@ export function LoginForm() {
       )}
 
       <div className="flex flex-col gap-1.5">
-        <label htmlFor="email" className="text-xs font-medium text-[#7a9cc0] uppercase tracking-wider">
+        <label htmlFor="email" className="text-xs font-medium text-[#9fb0da] uppercase tracking-wider">
           Email
         </label>
         <input
@@ -24,12 +25,12 @@ export function LoginForm() {
           type="email"
           autoComplete="email"
           required
-          className="bg-[#060d1a] border border-[#1a2d4a] rounded-lg px-3 py-2.5 text-sm text-white placeholder-[#3a5a7a] focus:outline-none focus:border-[#2a4a7a] transition-colors"
+          className="bg-[#060f2a] border border-[#142655] rounded-lg px-3 py-2.5 text-sm text-white placeholder-[#4a6899] focus:outline-none focus:border-[#2a4a8a] transition-colors"
         />
       </div>
 
       <div className="flex flex-col gap-1.5">
-        <label htmlFor="password" className="text-xs font-medium text-[#7a9cc0] uppercase tracking-wider">
+        <label htmlFor="password" className="text-xs font-medium text-[#9fb0da] uppercase tracking-wider">
           Password
         </label>
         <input
@@ -38,16 +39,16 @@ export function LoginForm() {
           type="password"
           autoComplete="current-password"
           required
-          className="bg-[#060d1a] border border-[#1a2d4a] rounded-lg px-3 py-2.5 text-sm text-white placeholder-[#3a5a7a] focus:outline-none focus:border-[#2a4a7a] transition-colors"
+          className="bg-[#060f2a] border border-[#142655] rounded-lg px-3 py-2.5 text-sm text-white placeholder-[#4a6899] focus:outline-none focus:border-[#2a4a8a] transition-colors"
         />
       </div>
 
       <button
         type="submit"
         disabled={pending}
-        className="bg-blue-600 hover:bg-blue-500 text-white py-2.5 rounded-lg text-sm font-medium tracking-wide transition-colors disabled:opacity-50 shadow-[0_0_16px_rgba(59,130,246,0.2)] mt-1"
+        className="bg-[#2457E6] hover:bg-[#3a6cf0] text-white py-2.5 rounded-lg text-sm font-medium tracking-wide transition-colors disabled:opacity-50 shadow-[0_0_16px_rgba(36,87,230,0.2)] mt-1"
       >
-        {pending ? "Logging in…" : "Log in"}
+        {pending ? <span className="inline-flex items-center justify-center gap-2"><SpinningBall size={18} />Logging in…</span> : "Log in"}
       </button>
     </form>
   );
